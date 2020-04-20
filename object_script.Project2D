@@ -1,0 +1,11 @@
+AdminWindow.o
+LoginManager.o
+User.o
+adminlogin.o
+dbManager.o
+graphds.o
+main.o
+mainwindow.o
+moc_AdminWindow.o
+moc_adminlogin.o
+moc_mainwindow.o

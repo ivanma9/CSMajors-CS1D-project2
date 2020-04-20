@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1245</width>
+    <height>834</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout_3">
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="login">
+          <property name="text">
+           <string>Admin Login</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QTabWidget" name="UsersTabs">
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <property name="tabBarAutoHide">
+         <bool>true</bool>
+        </property>
+        <widget class="QWidget" name="MainPage">
+         <attribute name="title">
+          <string>Main Page</string>
+         </attribute>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QTabWidget" name="MainPageTabs">
+            <property name="currentIndex">
+             <number>1</number>
+            </property>
+            <widget class="QWidget" name="WelcomeTab">
+             <attribute name="title">
+              <string>Welcome</string>
+             </attribute>
+            </widget>
+            <widget class="QWidget" name="DisplayListsTab">
+             <attribute name="title">
+              <string>Display Lists</string>
+             </attribute>
+             <widget class="QTreeWidget" name="treeWidget">
+              <property name="geometry">
+               <rect>
+                <x>10</x>
+                <y>60</y>
+                <width>256</width>
+                <height>192</height>
+               </rect>
+              </property>
+              <column>
+               <property name="text">
+                <string notr="true">1</string>
+               </property>
+              </column>
+             </widget>
+             <widget class="QPushButton" name="pushButton_2">
+              <property name="geometry">
+               <rect>
+                <x>190</x>
+                <y>20</y>
+                <width>75</width>
+                <height>23</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>Search</string>
+              </property>
+             </widget>
+             <widget class="QComboBox" name="comboBox">
+              <property name="geometry">
+               <rect>
+                <x>10</x>
+                <y>20</y>
+                <width>161</width>
+                <height>21</height>
+               </rect>
+              </property>
+             </widget>
+             <widget class="QTextEdit" name="tempDisplayINFO">
+              <property name="geometry">
+               <rect>
+                <x>10</x>
+                <y>480</y>
+                <width>311</width>
+                <height>181</height>
+               </rect>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="pushButton">
+              <property name="geometry">
+               <rect>
+                <x>150</x>
+                <y>450</y>
+                <width>80</width>
+                <height>21</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>Display(temp)</string>
+              </property>
+             </widget>
+             <widget class="QTableView" name="displayInfo">
+              <property name="geometry">
+               <rect>
+                <x>370</x>
+                <y>50</y>
+                <width>801</width>
+                <height>591</height>
+               </rect>
+              </property>
+             </widget>
+            </widget>
+            <widget class="QWidget" name="TeamInfoTab">
+             <attribute name="title">
+              <string>Team Information</string>
+             </attribute>
+             <widget class="QTreeWidget" name="treeWidget_2">
+              <property name="geometry">
+               <rect>
+                <x>360</x>
+                <y>80</y>
+                <width>256</width>
+                <height>192</height>
+               </rect>
+              </property>
+              <column>
+               <property name="text">
+                <string notr="true">1</string>
+               </property>
+              </column>
+             </widget>
+            </widget>
+            <widget class="QWidget" name="PlanTripTab">
+             <attribute name="title">
+              <string>Plan Trip</string>
+             </attribute>
+             <widget class="QPushButton" name="DFS">
+              <property name="geometry">
+               <rect>
+                <x>10</x>
+                <y>270</y>
+                <width>80</width>
+                <height>21</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>DFS</string>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="BFS">
+              <property name="geometry">
+               <rect>
+                <x>10</x>
+                <y>340</y>
+                <width>80</width>
+                <height>21</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>BFS</string>
+              </property>
+             </widget>
+             <widget class="QTextBrowser" name="TraversalDisplay">
+              <property name="geometry">
+               <rect>
+                <x>120</x>
+                <y>10</y>
+                <width>1071</width>
+                <height>621</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>Trebuchet MS</family>
+                <pointsize>14</pointsize>
+               </font>
+              </property>
+              <property name="html">
+               <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Trebuchet MS'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:8.25pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </widget>
+            <widget class="QWidget" name="AlgorithmTab">
+             <attribute name="title">
+              <string>Algorithm Test</string>
+             </attribute>
+             <widget class="QPushButton" name="pushButton_7">
+              <property name="geometry">
+               <rect>
+                <x>200</x>
+                <y>190</y>
+                <width>181</width>
+                <height>23</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>Dijkstra’s or the A* algorithm</string>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="pushButton_8">
+              <property name="geometry">
+               <rect>
+                <x>200</x>
+                <y>220</y>
+                <width>181</width>
+                <height>23</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>Prim’s or Kruskal’s algorithm</string>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="pushButton_9">
+              <property name="geometry">
+               <rect>
+                <x>200</x>
+                <y>250</y>
+                <width>181</width>
+                <height>23</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>DFS</string>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="pushButton_10">
+              <property name="geometry">
+               <rect>
+                <x>200</x>
+                <y>280</y>
+                <width>181</width>
+                <height>23</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>BFS</string>
+              </property>
+             </widget>
+            </widget>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="Admin">
+         <attribute name="title">
+          <string>Admin</string>
+         </attribute>
+         <widget class="QTabWidget" name="tabWidget_2">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>120</y>
+            <width>651</width>
+            <height>441</height>
+           </rect>
+          </property>
+          <property name="currentIndex">
+           <number>1</number>
+          </property>
+          <widget class="QWidget" name="TeamAdmin">
+           <attribute name="title">
+            <string>Team</string>
+           </attribute>
+           <widget class="QPushButton" name="pushButton_3">
+            <property name="geometry">
+             <rect>
+              <x>120</x>
+              <y>180</y>
+              <width>141</width>
+              <height>23</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Change Team Info</string>
+            </property>
+           </widget>
+           <widget class="QLineEdit" name="lineEdit">
+            <property name="geometry">
+             <rect>
+              <x>290</x>
+              <y>180</y>
+              <width>113</width>
+              <height>20</height>
+             </rect>
+            </property>
+           </widget>
+          </widget>
+          <widget class="QWidget" name="souvenirAdmin">
+           <attribute name="title">
+            <string>Souvenirs</string>
+           </attribute>
+           <widget class="QDoubleSpinBox" name="doubleSpinBox">
+            <property name="geometry">
+             <rect>
+              <x>450</x>
+              <y>220</y>
+              <width>62</width>
+              <height>22</height>
+             </rect>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="pushButton_4">
+            <property name="geometry">
+             <rect>
+              <x>320</x>
+              <y>190</y>
+              <width>101</width>
+              <height>23</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Add souvenir</string>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="pushButton_5">
+            <property name="geometry">
+             <rect>
+              <x>320</x>
+              <y>220</y>
+              <width>101</width>
+              <height>23</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Change souvenir</string>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="pushButton_6">
+            <property name="geometry">
+             <rect>
+              <x>320</x>
+              <y>250</y>
+              <width>101</width>
+              <height>23</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Delete souvenir</string>
+            </property>
+           </widget>
+           <widget class="QComboBox" name="comboBox_2">
+            <property name="geometry">
+             <rect>
+              <x>520</x>
+              <y>60</y>
+              <width>69</width>
+              <height>22</height>
+             </rect>
+            </property>
+           </widget>
+          </widget>
+         </widget>
+        </widget>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1245</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
