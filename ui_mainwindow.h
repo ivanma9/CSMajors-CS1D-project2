@@ -12,10 +12,10 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
-#include <QtWidgets/QDoubleSpinBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
-#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
@@ -23,9 +23,9 @@
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTableView>
+#include <QtWidgets/QTableWidget>
 #include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QTextEdit>
-#include <QtWidgets/QTreeWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -46,34 +46,35 @@ public:
     QTabWidget *MainPageTabs;
     QWidget *WelcomeTab;
     QWidget *DisplayListsTab;
-    QTreeWidget *treeWidget;
     QPushButton *pushButton_2;
     QComboBox *comboBox;
-    QTextEdit *tempDisplayINFO;
-    QPushButton *pushButton;
     QTableView *displayInfo;
+    QLabel *calc_label;
+    QLabel *calc_label_2;
+    QLabel *calc_label_3;
+    QLabel *label;
     QWidget *TeamInfoTab;
-    QTreeWidget *treeWidget_2;
+    QListWidget *listWidget;
+    QTextEdit *textEdit;
+    QPushButton *pushButton_TeamInfo;
     QWidget *PlanTripTab;
     QPushButton *DFS;
     QPushButton *BFS;
     QTextBrowser *TraversalDisplay;
+    QComboBox *comboBox_3;
     QWidget *AlgorithmTab;
     QPushButton *pushButton_7;
     QPushButton *pushButton_8;
     QPushButton *pushButton_9;
     QPushButton *pushButton_10;
     QWidget *Admin;
-    QTabWidget *tabWidget_2;
-    QWidget *TeamAdmin;
-    QPushButton *pushButton_3;
-    QLineEdit *lineEdit;
-    QWidget *souvenirAdmin;
-    QDoubleSpinBox *doubleSpinBox;
-    QPushButton *pushButton_4;
-    QPushButton *pushButton_5;
-    QPushButton *pushButton_6;
-    QComboBox *comboBox_2;
+    QHBoxLayout *horizontalLayout_5;
+    QHBoxLayout *horizontalLayout_4;
+    QVBoxLayout *verticalLayout_2;
+    QLabel *label_2;
+    QComboBox *SelectTeam;
+    QSpacerItem *verticalSpacer;
+    QTableWidget *ModifyTable;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -81,7 +82,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(1245, 834);
+        MainWindow->resize(1166, 743);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         horizontalLayout_3 = new QHBoxLayout(centralwidget);
@@ -116,36 +117,58 @@ public:
         MainPageTabs->addTab(WelcomeTab, QString());
         DisplayListsTab = new QWidget();
         DisplayListsTab->setObjectName(QString::fromUtf8("DisplayListsTab"));
-        treeWidget = new QTreeWidget(DisplayListsTab);
-        QTreeWidgetItem *__qtreewidgetitem = new QTreeWidgetItem();
-        __qtreewidgetitem->setText(0, QString::fromUtf8("1"));
-        treeWidget->setHeaderItem(__qtreewidgetitem);
-        treeWidget->setObjectName(QString::fromUtf8("treeWidget"));
-        treeWidget->setGeometry(QRect(10, 60, 256, 192));
         pushButton_2 = new QPushButton(DisplayListsTab);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        pushButton_2->setGeometry(QRect(190, 20, 75, 23));
+        pushButton_2->setGeometry(QRect(224, 122, 131, 31));
+        QFont font;
+        font.setPointSize(14);
+        pushButton_2->setFont(font);
         comboBox = new QComboBox(DisplayListsTab);
         comboBox->setObjectName(QString::fromUtf8("comboBox"));
-        comboBox->setGeometry(QRect(10, 20, 161, 21));
-        tempDisplayINFO = new QTextEdit(DisplayListsTab);
-        tempDisplayINFO->setObjectName(QString::fromUtf8("tempDisplayINFO"));
-        tempDisplayINFO->setGeometry(QRect(10, 480, 311, 181));
-        pushButton = new QPushButton(DisplayListsTab);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(150, 450, 80, 21));
+        comboBox->setGeometry(QRect(20, 70, 331, 31));
+        QFont font1;
+        font1.setPointSize(10);
+        comboBox->setFont(font1);
         displayInfo = new QTableView(DisplayListsTab);
         displayInfo->setObjectName(QString::fromUtf8("displayInfo"));
         displayInfo->setGeometry(QRect(370, 50, 801, 591));
+        calc_label = new QLabel(DisplayListsTab);
+        calc_label->setObjectName(QString::fromUtf8("calc_label"));
+        calc_label->setGeometry(QRect(410, 649, 411, 21));
+        QFont font2;
+        font2.setPointSize(18);
+        calc_label->setFont(font2);
+        calc_label->setLayoutDirection(Qt::LeftToRight);
+        calc_label->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        calc_label_2 = new QLabel(DisplayListsTab);
+        calc_label_2->setObjectName(QString::fromUtf8("calc_label_2"));
+        calc_label_2->setGeometry(QRect(860, 650, 101, 21));
+        calc_label_2->setFont(font2);
+        calc_label_3 = new QLabel(DisplayListsTab);
+        calc_label_3->setObjectName(QString::fromUtf8("calc_label_3"));
+        calc_label_3->setGeometry(QRect(970, 650, 161, 20));
+        calc_label_3->setFont(font2);
+        label = new QLabel(DisplayListsTab);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setGeometry(QRect(20, 30, 91, 31));
+        QFont font3;
+        font3.setPointSize(12);
+        label->setFont(font3);
         MainPageTabs->addTab(DisplayListsTab, QString());
         TeamInfoTab = new QWidget();
         TeamInfoTab->setObjectName(QString::fromUtf8("TeamInfoTab"));
-        treeWidget_2 = new QTreeWidget(TeamInfoTab);
-        QTreeWidgetItem *__qtreewidgetitem1 = new QTreeWidgetItem();
-        __qtreewidgetitem1->setText(0, QString::fromUtf8("1"));
-        treeWidget_2->setHeaderItem(__qtreewidgetitem1);
-        treeWidget_2->setObjectName(QString::fromUtf8("treeWidget_2"));
-        treeWidget_2->setGeometry(QRect(360, 80, 256, 192));
+        listWidget = new QListWidget(TeamInfoTab);
+        listWidget->setObjectName(QString::fromUtf8("listWidget"));
+        listWidget->setGeometry(QRect(50, 40, 211, 481));
+        textEdit = new QTextEdit(TeamInfoTab);
+        textEdit->setObjectName(QString::fromUtf8("textEdit"));
+        textEdit->setGeometry(QRect(440, 40, 621, 481));
+        pushButton_TeamInfo = new QPushButton(TeamInfoTab);
+        pushButton_TeamInfo->setObjectName(QString::fromUtf8("pushButton_TeamInfo"));
+        pushButton_TeamInfo->setGeometry(QRect(290, 230, 121, 71));
+        pushButton_TeamInfo->setStyleSheet(QString::fromUtf8("html.solid {border-style: solid;}\n"
+""));
+        pushButton_TeamInfo->setAutoDefault(false);
         MainPageTabs->addTab(TeamInfoTab, QString());
         PlanTripTab = new QWidget();
         PlanTripTab->setObjectName(QString::fromUtf8("PlanTripTab"));
@@ -157,11 +180,14 @@ public:
         BFS->setGeometry(QRect(10, 340, 80, 21));
         TraversalDisplay = new QTextBrowser(PlanTripTab);
         TraversalDisplay->setObjectName(QString::fromUtf8("TraversalDisplay"));
-        TraversalDisplay->setGeometry(QRect(120, 10, 1071, 621));
-        QFont font;
-        font.setFamily(QString::fromUtf8("Trebuchet MS"));
-        font.setPointSize(14);
-        TraversalDisplay->setFont(font);
+        TraversalDisplay->setGeometry(QRect(240, 10, 951, 621));
+        QFont font4;
+        font4.setFamily(QString::fromUtf8("Trebuchet MS"));
+        font4.setPointSize(14);
+        TraversalDisplay->setFont(font4);
+        comboBox_3 = new QComboBox(PlanTripTab);
+        comboBox_3->setObjectName(QString::fromUtf8("comboBox_3"));
+        comboBox_3->setGeometry(QRect(30, 80, 72, 22));
         MainPageTabs->addTab(PlanTripTab, QString());
         AlgorithmTab = new QWidget();
         AlgorithmTab->setObjectName(QString::fromUtf8("AlgorithmTab"));
@@ -184,36 +210,61 @@ public:
         UsersTabs->addTab(MainPage, QString());
         Admin = new QWidget();
         Admin->setObjectName(QString::fromUtf8("Admin"));
-        tabWidget_2 = new QTabWidget(Admin);
-        tabWidget_2->setObjectName(QString::fromUtf8("tabWidget_2"));
-        tabWidget_2->setGeometry(QRect(30, 120, 651, 441));
-        TeamAdmin = new QWidget();
-        TeamAdmin->setObjectName(QString::fromUtf8("TeamAdmin"));
-        pushButton_3 = new QPushButton(TeamAdmin);
-        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
-        pushButton_3->setGeometry(QRect(120, 180, 141, 23));
-        lineEdit = new QLineEdit(TeamAdmin);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
-        lineEdit->setGeometry(QRect(290, 180, 113, 20));
-        tabWidget_2->addTab(TeamAdmin, QString());
-        souvenirAdmin = new QWidget();
-        souvenirAdmin->setObjectName(QString::fromUtf8("souvenirAdmin"));
-        doubleSpinBox = new QDoubleSpinBox(souvenirAdmin);
-        doubleSpinBox->setObjectName(QString::fromUtf8("doubleSpinBox"));
-        doubleSpinBox->setGeometry(QRect(450, 220, 62, 22));
-        pushButton_4 = new QPushButton(souvenirAdmin);
-        pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
-        pushButton_4->setGeometry(QRect(320, 190, 101, 23));
-        pushButton_5 = new QPushButton(souvenirAdmin);
-        pushButton_5->setObjectName(QString::fromUtf8("pushButton_5"));
-        pushButton_5->setGeometry(QRect(320, 220, 101, 23));
-        pushButton_6 = new QPushButton(souvenirAdmin);
-        pushButton_6->setObjectName(QString::fromUtf8("pushButton_6"));
-        pushButton_6->setGeometry(QRect(320, 250, 101, 23));
-        comboBox_2 = new QComboBox(souvenirAdmin);
-        comboBox_2->setObjectName(QString::fromUtf8("comboBox_2"));
-        comboBox_2->setGeometry(QRect(520, 60, 69, 22));
-        tabWidget_2->addTab(souvenirAdmin, QString());
+        horizontalLayout_5 = new QHBoxLayout(Admin);
+        horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
+        verticalLayout_2 = new QVBoxLayout();
+        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        label_2 = new QLabel(Admin);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        QSizePolicy sizePolicy(QSizePolicy::Maximum, QSizePolicy::Preferred);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
+        label_2->setSizePolicy(sizePolicy);
+        label_2->setMaximumSize(QSize(300, 16777215));
+        QFont font5;
+        font5.setFamily(QString::fromUtf8("Calibri"));
+        font5.setPointSize(14);
+        font5.setBold(true);
+        font5.setWeight(75);
+        label_2->setFont(font5);
+        label_2->setAlignment(Qt::AlignCenter);
+
+        verticalLayout_2->addWidget(label_2);
+
+        SelectTeam = new QComboBox(Admin);
+        SelectTeam->setObjectName(QString::fromUtf8("SelectTeam"));
+        QSizePolicy sizePolicy1(QSizePolicy::Maximum, QSizePolicy::Fixed);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(SelectTeam->sizePolicy().hasHeightForWidth());
+        SelectTeam->setSizePolicy(sizePolicy1);
+        SelectTeam->setMaximumSize(QSize(300, 16777215));
+        QFont font6;
+        font6.setFamily(QString::fromUtf8("Calibri"));
+        font6.setPointSize(12);
+        SelectTeam->setFont(font6);
+
+        verticalLayout_2->addWidget(SelectTeam);
+
+        verticalSpacer = new QSpacerItem(300, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_2->addItem(verticalSpacer);
+
+
+        horizontalLayout_4->addLayout(verticalLayout_2);
+
+        ModifyTable = new QTableWidget(Admin);
+        ModifyTable->setObjectName(QString::fromUtf8("ModifyTable"));
+        ModifyTable->setFont(font6);
+
+        horizontalLayout_4->addWidget(ModifyTable);
+
+
+        horizontalLayout_5->addLayout(horizontalLayout_4);
+
         UsersTabs->addTab(Admin, QString());
 
         verticalLayout->addWidget(UsersTabs);
@@ -224,7 +275,7 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1245, 20));
+        menubar->setGeometry(QRect(0, 0, 1166, 20));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -232,9 +283,8 @@ public:
 
         retranslateUi(MainWindow);
 
-        UsersTabs->setCurrentIndex(0);
-        MainPageTabs->setCurrentIndex(1);
-        tabWidget_2->setCurrentIndex(1);
+        UsersTabs->setCurrentIndex(1);
+        MainPageTabs->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -246,8 +296,21 @@ public:
         login->setText(QCoreApplication::translate("MainWindow", "Admin Login", nullptr));
         MainPageTabs->setTabText(MainPageTabs->indexOf(WelcomeTab), QCoreApplication::translate("MainWindow", "Welcome", nullptr));
         pushButton_2->setText(QCoreApplication::translate("MainWindow", "Search", nullptr));
-        pushButton->setText(QCoreApplication::translate("MainWindow", "Display(temp)", nullptr));
+        calc_label->setText(QString());
+        calc_label_2->setText(QString());
+        calc_label_3->setText(QString());
+        label->setText(QCoreApplication::translate("MainWindow", "Sort by:", nullptr));
         MainPageTabs->setTabText(MainPageTabs->indexOf(DisplayListsTab), QCoreApplication::translate("MainWindow", "Display Lists", nullptr));
+#if QT_CONFIG(tooltip)
+        pushButton_TeamInfo->setToolTip(QCoreApplication::translate("MainWindow", "<html class = \"solid\">\n"
+"<head>\n"
+"<style>\n"
+"html.solid {border-style: solid;}\n"
+"</style>\n"
+"</head>\n"
+"</html>", nullptr));
+#endif // QT_CONFIG(tooltip)
+        pushButton_TeamInfo->setText(QString());
         MainPageTabs->setTabText(MainPageTabs->indexOf(TeamInfoTab), QCoreApplication::translate("MainWindow", "Team Information", nullptr));
         DFS->setText(QCoreApplication::translate("MainWindow", "DFS", nullptr));
         BFS->setText(QCoreApplication::translate("MainWindow", "BFS", nullptr));
@@ -263,12 +326,7 @@ public:
         pushButton_10->setText(QCoreApplication::translate("MainWindow", "BFS", nullptr));
         MainPageTabs->setTabText(MainPageTabs->indexOf(AlgorithmTab), QCoreApplication::translate("MainWindow", "Algorithm Test", nullptr));
         UsersTabs->setTabText(UsersTabs->indexOf(MainPage), QCoreApplication::translate("MainWindow", "Main Page", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("MainWindow", "Change Team Info", nullptr));
-        tabWidget_2->setTabText(tabWidget_2->indexOf(TeamAdmin), QCoreApplication::translate("MainWindow", "Team", nullptr));
-        pushButton_4->setText(QCoreApplication::translate("MainWindow", "Add souvenir", nullptr));
-        pushButton_5->setText(QCoreApplication::translate("MainWindow", "Change souvenir", nullptr));
-        pushButton_6->setText(QCoreApplication::translate("MainWindow", "Delete souvenir", nullptr));
-        tabWidget_2->setTabText(tabWidget_2->indexOf(souvenirAdmin), QCoreApplication::translate("MainWindow", "Souvenirs", nullptr));
+        label_2->setText(QCoreApplication::translate("MainWindow", "Select a Team to modify", nullptr));
         UsersTabs->setTabText(UsersTabs->indexOf(Admin), QCoreApplication::translate("MainWindow", "Admin", nullptr));
     } // retranslateUi
 

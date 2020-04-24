@@ -10,6 +10,8 @@
 #include <QString>
 #include <QInputDialog>
 #include <QSqlQueryModel>
+#include <QTableWidgetItem>
+#include <QSpinBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -50,6 +52,7 @@ struct MBLInfo
 
     //turns the distance String from the format ### feet ###
     //and store it into the feet and meter respectively.
+    /*
     void DistantConvert(QString str)
     {
         QStringList temp = str.split("feet", QString::SkipEmptyParts);
@@ -57,7 +60,7 @@ struct MBLInfo
         DistanceFT = temp[0].toInt();
         DistanceMeter = temp[1].toInt();
     }
-
+    */
     //contrustor
     MBLInfo():  TeamName(""),
                 StadiumName(""),
@@ -136,8 +139,13 @@ public:
     MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-    void CreateGraph();
-    void ReadInfo();
+    void CreateGraph(); //uses graph
+    void ReadInfo();    //intitallizes MLB vector
+    void UpdateInfo(int);   //takes everything from MLB vector in SQL
+
+    void setupDisplayListTab(); //nope
+    void setupTeamInfoTab();    //uses MLB vector
+    int GetOneLineArithmetic(QString sQry); //nope
 
 private slots:
     void on_login_clicked();
@@ -148,6 +156,14 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_pushButton_2_clicked();
+
+    void on_pushButton_TeamInfo_clicked();
+
+    void on_SelectTeam_currentIndexChanged(int index);
+
+    void on_ModifyTable_itemChanged(QTableWidgetItem *item);
+
 private:
     Ui::MainWindow *ui;
 
@@ -155,5 +171,9 @@ private:
 
     GraphDS graphs;
     QList<MBLInfo> mblInfo;
+    int infoSize;
+
+    bool modifyTable; // controls the auto changing nature of on_ModifyTable_itemChanged()
+
 };
 #endif // MAINWINDOW_H

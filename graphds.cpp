@@ -127,40 +127,7 @@ void GraphDS::refSort(int currentAirport)
     }
 }
 
-//QString GraphDS::Display()
-//{
-//    int index, aPoint, bPoint, refPoint, refSize;
-//    QString output = "";
 
-//    qDebug() << "Displaying the graph. Every Vertex and each of its ref edges";
-//    qDebug()     << "Total Vertices: " << numVertex;
-//    qDebug()     << "Total Edges: "<<  numEdges << endl;
-
-//    for(int i = 0 ; i < numVertex; i++)
-//    {
-//        //refSort(i);
-//        refSize = airports[i].ref.size();
-//        qDebug() << "Index: " << i << " | "<< refSize <<" refs | " ;
-//        qDebug() << airports[i].name << " connects to ";
-//        for(int j = 0 ; j < refSize; j++)
-//        {
-//            refPoint = airports[i].ref[j];
-//            index = FindEdges(i,refPoint);
-//            if(index != -1)
-//            {
-
-//                aPoint= edges[index].pointA;
-//                bPoint= edges[index].pointB;
-//                qDebug() << "     " << airports[i].name << " (" << aPoint <<","<< bPoint << ") - "<< edges[index].distance;
-
-//            }
-//            else
-//                qDebug() << "This edge doesn't exist\n";
-
-//        }
-//    }
-//    return output;
-//}
 QString GraphDS::Display()
 {
     int index, aPoint, bPoint, refPoint, refSize;

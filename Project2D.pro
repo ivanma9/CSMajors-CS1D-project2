@@ -16,27 +16,26 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    AdminWindow.cpp \
     LoginManager.cpp \
     User.cpp \
     adminlogin.cpp \
     dbManager.cpp \
     graphds.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    mapds.cpp
 
 HEADERS += \
-    AdminWindow.h \
     Constants.h \
     LoginManager.h \
     User.h \
     adminlogin.h \
     dbManager.h \
     graphds.h \
-    mainwindow.h
+    mainwindow.h \
+    mapds.h
 
 FORMS += \
-    AdminWindow.ui \
     adminlogin.ui \
     mainwindow.ui
 
@@ -44,3 +43,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    rec.qrc
