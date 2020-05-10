@@ -1,0 +1,11 @@
+LoginManager.o
+User.o
+adminlogin.o
+dbManager.o
+graphds.o
+main.o
+mainwindow.o
+mapds.o
+qrc_rec.o
+moc_adminlogin.o
+moc_mainwindow.o

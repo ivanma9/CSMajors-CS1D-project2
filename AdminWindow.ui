@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AdminWindow</class>
+ <widget class="QDialog" name="AdminWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>613</width>
+    <height>504</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>20</y>
+     <width>401</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QPushButton" name="PushButton_BackTMain">
+      <property name="text">
+       <string>Logout</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <spacer name="horizontalSpacer">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>148</width>
+        <height>21</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>Welcome Administrator</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="layoutWidget_2">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>160</y>
+     <width>581</width>
+     <height>331</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QPushButton" name="PushButton_AddEmployee">
+        <property name="text">
+         <string>Add Employee</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="PushButton_DeleteEmployee">
+        <property name="text">
+         <string>Delete Employee</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="PushButton_EditEmployee">
+        <property name="text">
+         <string>Edit Employee Information</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QPushButton" name="PushButton_AddMember">
+        <property name="text">
+         <string>Add Member</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="PushButton_DeleteMember">
+        <property name="text">
+         <string>Delete Member</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="PushButton_EditMember">
+        <property name="text">
+         <string>Edit Member</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="PushButton_NewPurchase">
+        <property name="text">
+         <string>New Purchase</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <item>
+       <widget class="QPushButton" name="PushButton_AddItem">
+        <property name="text">
+         <string>Add Item</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="PushButton_DelteItem">
+        <property name="text">
+         <string>Delete Item</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="PushButton_EditItem">
+        <property name="text">
+         <string>Edit Item</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
