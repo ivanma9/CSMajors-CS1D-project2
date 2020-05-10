@@ -1,1 +1,2 @@
-# Hi-Chew-CS1C-Project-2
+# CSMajors-CS1D-Project-2
+CS1D Project 2
