@@ -1262,7 +1262,6 @@ void MainWindow::on_DeleteSouv_clicked()
         if (reply == QMessageBox::Yes)
         {
             qDebug() << "Yes was clicked";
-
             qDebug() << "Removed: "<< mblInfo[selected].StadiumName << souvTar[souvIndex].name << souvTar[souvIndex].price;
             souvenirs.removeSouv(mblInfo[selected].StadiumName, souvTar[souvIndex].name);
 
@@ -1272,11 +1271,14 @@ void MainWindow::on_DeleteSouv_clicked()
 
             if(!deleteQuery.exec())
                 qDebug() << "Delete Souvenir in SQl did not execute!";
+            on_SelectTeam_currentIndexChanged(souvIndex);
+
         }
         else
         {
             qDebug() << "Delete Souvenir canceled";
         }
+
     }
     else
     {
@@ -1318,6 +1320,7 @@ void MainWindow::on_LV_Button_clicked()
 {
 
     MBLInfo newElement;
+
     newElement.TeamName = "Las Vegas Gamblers";
     newElement.StadiumName = "Las Vegas Stadium";
     newElement.SeatingCapacity = 41111;
@@ -1330,8 +1333,10 @@ void MainWindow::on_LV_Button_clicked()
     newElement.DistanceMeter = 122;
     newElement.BallparkTypology = "Retro Modern";
     newElement.RoofType = "Open";
+    int ind = teamSearch(newElement.TeamName);
+    qDebug() << ind;
 
-    if(teamSearch(newElement.TeamName) == -1)
+    if(ind == -1)
     {
         infoSize++;
         mblInfo.push_back(newElement);
@@ -1396,8 +1401,7 @@ void MainWindow::on_LV_Button_clicked()
         qDebug()<<graphs.Display();
 
         QSqlQuery query2;
-        query2.prepare("INSERT INTO DistancesBetweenStadiums(OriginatedStadium, DestinationStadium, Distance)"
-                      " VALUES (:start_dist1, :end_dist1, :addDist1)");
+        query2.prepare("INSERT INTO DistanceBetweenStadiums VALUES (:start_dist1, :end_dist1, :addDist1)");
         query2.bindValue(":start_dist1", startStad);
         query2.bindValue(":end_dist1", endStad1);
         query2.bindValue(":addDist1", d1);
@@ -1412,8 +1416,7 @@ void MainWindow::on_LV_Button_clicked()
         }
 
         QSqlQuery query3;
-        query3.prepare("INSERT INTO DistancesBetweenStadiums(OriginatedStadium, DestinationStadium, Distance)"
-                      " VALUES (:start_dist2, :end_dist2, :addDist2)");
+        query3.prepare("INSERT INTO DistanceBetweenStadiums VALUES (:start_dist2, :end_dist2, :addDist2)");
         query3.bindValue(":start_dist2", startStad);
         query3.bindValue(":end_dist2", endStad2);
         query3.bindValue(":addDist2", d2);
@@ -1428,8 +1431,7 @@ void MainWindow::on_LV_Button_clicked()
         }
 
         QSqlQuery query4;
-        query4.prepare("INSERT INTO DistancesBetweenStadiums(OriginatedStadium, DestinationStadium, Distance)"
-                      " VALUES (:start_dist3, :end_dist3, :addDist3)");
+        query4.prepare("INSERT INTO DistanceBetweenStadiums VALUES (:start_dist3, :end_dist3, :addDist3)");
         query4.bindValue(":start_dist3", startStad);
         query4.bindValue(":end_dist3", endStad3);
         query4.bindValue(":addDist3", d3);
@@ -1443,6 +1445,106 @@ void MainWindow::on_LV_Button_clicked()
             qDebug() << "Query UNABLE to execute!";
             QMessageBox::information(this,QObject::tr("System Message"),tr("Failure to input the desired stadium as it already exists!"),QMessageBox::Ok);
         }
+
+
+        //SOuv
+        QSqlQuery insertQuery;
+        QString newSouv;
+        double newPrice;
+        int ind = teamSearch("Las Vegas Gamblers");
+
+        newSouv = "Baseball cap";
+        newPrice = 18.99;
+        souvenirs.insert(mblInfo[ind].StadiumName,newSouv,newPrice);
+
+        on_SelectTeam_currentIndexChanged(ind);
+
+        insertQuery.prepare("INSERT INTO Souvenirs (Stadiumname, Souvenir, Price) VALUES (:stadium, :item, :price)");
+        insertQuery.bindValue(":stadium", mblInfo[ind].StadiumName);
+        insertQuery.bindValue(":item", newSouv);
+        insertQuery.bindValue(":price", newPrice);
+
+        if(!insertQuery.exec())
+        {
+            qDebug() << "Add Souvenir in SQl did not execute!";
+        }
+        else
+            qDebug() << "Add Souvenir success";
+
+        newSouv = "Baseball bat";
+        newPrice = 89.39;
+        souvenirs.insert(mblInfo[ind].StadiumName,newSouv,newPrice);
+
+        on_SelectTeam_currentIndexChanged(ind);
+
+        insertQuery.prepare("INSERT INTO Souvenirs (Stadiumname, Souvenir, Price) VALUES (:stadium, :item, :price)");
+        insertQuery.bindValue(":stadium", mblInfo[ind].StadiumName);
+        insertQuery.bindValue(":item", newSouv);
+        insertQuery.bindValue(":price", newPrice);
+
+        if(!insertQuery.exec())
+        {
+            qDebug() << "Add Souvenir in SQl did not execute!";
+        }
+        else
+            qDebug() << "Add Souvenir success";
+        newSouv = "Team pennant";
+        newPrice = 17.99;
+        souvenirs.insert(mblInfo[ind].StadiumName,newSouv,newPrice);
+
+        on_SelectTeam_currentIndexChanged(ind);
+
+        insertQuery.prepare("INSERT INTO Souvenirs (Stadiumname, Souvenir, Price) VALUES (:stadium, :item, :price)");
+        insertQuery.bindValue(":stadium", mblInfo[ind].StadiumName);
+        insertQuery.bindValue(":item", newSouv);
+        insertQuery.bindValue(":price", newPrice);
+
+        if(!insertQuery.exec())
+        {
+            qDebug() << "Add Souvenir in SQl did not execute!";
+        }
+        else
+            qDebug() << "Add Souvenir success";
+        newSouv = "Autographed baseball";
+        newPrice = 29.99;
+        souvenirs.insert(mblInfo[ind].StadiumName,newSouv,newPrice);
+
+        on_SelectTeam_currentIndexChanged(ind);
+
+        insertQuery.prepare("INSERT INTO Souvenirs (Stadiumname, Souvenir, Price) VALUES (:stadium, :item, :price)");
+        insertQuery.bindValue(":stadium", mblInfo[ind].StadiumName);
+        insertQuery.bindValue(":item", newSouv);
+        insertQuery.bindValue(":price", newPrice);
+
+        if(!insertQuery.exec())
+        {
+            qDebug() << "Add Souvenir in SQl did not execute!";
+        }
+        else
+            qDebug() << "Add Souvenir success";
+        newSouv = "Team jersey";
+        newPrice = 199.99;
+        souvenirs.insert(mblInfo[ind].StadiumName,newSouv,newPrice);
+
+        on_SelectTeam_currentIndexChanged(ind);
+
+        insertQuery.prepare("INSERT INTO Souvenirs (Stadiumname, Souvenir, Price) VALUES (:stadium, :item, :price)");
+        insertQuery.bindValue(":stadium", mblInfo[ind].StadiumName);
+        insertQuery.bindValue(":item", newSouv);
+        insertQuery.bindValue(":price", newPrice);
+
+        if(!insertQuery.exec())
+        {
+            qDebug() << "Add Souvenir in SQl did not execute!";
+        }
+        else
+            qDebug() << "Add Souvenir success";
+
+
+        //adding to widgets
+        ui->SelectTeam->insertItem(ind,mblInfo[ind].TeamName); // list in admin
+
+
     }
     else
         qDebug() << "LV already exists !";
@@ -1470,6 +1572,7 @@ int MainWindow::teamSearch(QString teamName)
 void MainWindow::on_reset_clicked()
 {
     int ind = teamSearch("Las Vegas Gamblers");
+    qDebug() << ind;
     if(ind != -1)
     {
         qDebug() << "Found LV !";
@@ -1487,6 +1590,38 @@ void MainWindow::on_reset_clicked()
         }
         mblInfo.removeAt(ind);
         infoSize--;
+
+        qDebug()<<graphs.Display();
+
+        QSqlQuery deleteQuery2;
+        deleteQuery2.prepare("DELETE FROM DistanceBetweenStadiums WHERE OriginatedStadium = :index");
+        deleteQuery2.bindValue(":index", "Las Vegas Stadium");
+        if(deleteQuery2.exec())
+        {
+            qDebug() << "Query executed !";
+        }
+        else
+        {
+            qDebug() << "Query UNABLE to execute!";
+            QMessageBox::information(this,QObject::tr("System Message"),tr("Failure to input the desired stadium as it already exists!"),QMessageBox::Ok);
+        }
+
+        QSqlQuery deleteQuery3;
+        deleteQuery3.prepare("DELETE FROM Souvenirs WHERE Stadiumname = :index");
+        deleteQuery3.bindValue(":index", "Las Vegas Stadium");
+        if(deleteQuery3.exec())
+        {
+            qDebug() << "Query executed !";
+        }
+        else
+        {
+            qDebug() << "Query UNABLE to execute!";
+            QMessageBox::information(this,QObject::tr("System Message"),tr("Failure to input the desired stadium as it already exists!"),QMessageBox::Ok);
+        }
+
+        ui->SelectTeam->removeItem(ind); // list in admin
+
+
     }
 
 }
