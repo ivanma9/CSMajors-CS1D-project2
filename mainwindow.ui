@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1080</width>
-    <height>739</height>
+    <width>1137</width>
+    <height>710</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -44,7 +44,7 @@
       <item>
        <widget class="QTabWidget" name="UsersTabs">
         <property name="currentIndex">
-         <number>1</number>
+         <number>0</number>
         </property>
         <property name="tabBarAutoHide">
          <bool>true</bool>
@@ -57,12 +57,36 @@
           <item>
            <widget class="QTabWidget" name="MainPageTabs">
             <property name="currentIndex">
-             <number>3</number>
+             <number>2</number>
             </property>
             <widget class="QWidget" name="WelcomeTab">
              <attribute name="title">
               <string>Welcome</string>
              </attribute>
+             <layout class="QHBoxLayout" name="horizontalLayout_19">
+              <item>
+               <widget class="QLabel" name="WelcomePage">
+                <property name="frameShape">
+                 <enum>QFrame::NoFrame</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Plain</enum>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="pixmap">
+                 <pixmap resource="rec.qrc">:/img/300 x 300px PNG/Welcome_Page_1200_x_600_PNG.png</pixmap>
+                </property>
+                <property name="scaledContents">
+                 <bool>true</bool>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </widget>
             <widget class="QWidget" name="DisplayListsTab">
              <attribute name="title">
@@ -197,31 +221,52 @@
              <widget class="QListWidget" name="listWidget">
               <property name="geometry">
                <rect>
-                <x>50</x>
-                <y>40</y>
-                <width>211</width>
-                <height>481</height>
+                <x>9</x>
+                <y>9</y>
+                <width>251</width>
+                <height>531</height>
                </rect>
+              </property>
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
               </property>
              </widget>
              <widget class="QTextEdit" name="textEdit">
               <property name="geometry">
                <rect>
-                <x>440</x>
-                <y>40</y>
-                <width>621</width>
-                <height>481</height>
+                <x>430</x>
+                <y>10</y>
+                <width>651</width>
+                <height>521</height>
                </rect>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
               </property>
              </widget>
              <widget class="QPushButton" name="pushButton_TeamInfo">
               <property name="geometry">
                <rect>
-                <x>290</x>
-                <y>230</y>
-                <width>121</width>
-                <height>71</height>
+                <x>270</x>
+                <y>220</y>
+                <width>151</width>
+                <height>87</height>
                </rect>
+              </property>
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>300</width>
+                <height>500</height>
+               </size>
               </property>
               <property name="toolTip">
                <string>&lt;html class = &quot;solid&quot;&gt;
@@ -243,6 +288,46 @@ html.solid {border-style: solid;}
                <bool>false</bool>
               </property>
              </widget>
+             <widget class="QLabel" name="InfoLogo">
+              <property name="geometry">
+               <rect>
+                <x>270</x>
+                <y>40</y>
+                <width>151</width>
+                <height>161</height>
+               </rect>
+              </property>
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>300</width>
+                <height>300</height>
+               </size>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Plain</enum>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="pixmap">
+               <pixmap resource="rec.qrc">:/logos/300 x 300px PNG/arizona-diamondbacks-logo-transparent.png</pixmap>
+              </property>
+              <property name="scaledContents">
+               <bool>true</bool>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
+             </widget>
             </widget>
             <widget class="QWidget" name="PlanTripTab">
              <attribute name="title">
@@ -261,483 +346,486 @@ html.solid {border-style: solid;}
                  <number>0</number>
                 </property>
                 <widget class="QWidget" name="PlanTrip">
-                 <layout class="QHBoxLayout" name="horizontalLayout_18">
+                 <layout class="QVBoxLayout" name="verticalLayout_9">
                   <item>
                    <widget class="QSplitter" name="splitter">
                     <property name="orientation">
                      <enum>Qt::Horizontal</enum>
                     </property>
-                    <widget class="QWidget" name="layoutWidget">
-                     <layout class="QVBoxLayout" name="verticalLayout_5">
+                    <widget class="QWidget" name="">
+                     <layout class="QHBoxLayout" name="horizontalLayout_18">
                       <item>
-                       <widget class="QLabel" name="label_4">
-                        <property name="sizePolicy">
-                         <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
-                          <horstretch>0</horstretch>
-                          <verstretch>0</verstretch>
-                         </sizepolicy>
-                        </property>
-                        <property name="maximumSize">
-                         <size>
-                          <width>16777215</width>
-                          <height>100</height>
-                         </size>
-                        </property>
-                        <property name="font">
-                         <font>
-                          <family>Calibri</family>
-                          <pointsize>16</pointsize>
-                          <weight>75</weight>
-                          <bold>true</bold>
-                         </font>
-                        </property>
-                        <property name="text">
-                         <string>Trip Planner</string>
-                        </property>
-                        <property name="alignment">
-                         <set>Qt::AlignCenter</set>
-                        </property>
-                       </widget>
-                      </item>
-                      <item>
-                       <widget class="Line" name="line_4">
-                        <property name="orientation">
-                         <enum>Qt::Horizontal</enum>
-                        </property>
-                       </widget>
-                      </item>
-                      <item>
-                       <widget class="QLabel" name="label_8">
-                        <property name="sizePolicy">
-                         <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
-                          <horstretch>0</horstretch>
-                          <verstretch>0</verstretch>
-                         </sizepolicy>
-                        </property>
-                        <property name="maximumSize">
-                         <size>
-                          <width>16777215</width>
-                          <height>16777215</height>
-                         </size>
-                        </property>
-                        <property name="font">
-                         <font>
-                          <family>Calibri</family>
-                          <pointsize>12</pointsize>
-                          <weight>75</weight>
-                          <bold>true</bold>
-                         </font>
-                        </property>
-                        <property name="text">
-                         <string>Select a Team to start at</string>
-                        </property>
-                        <property name="alignment">
-                         <set>Qt::AlignCenter</set>
-                        </property>
-                       </widget>
-                      </item>
-                      <item>
-                       <widget class="QComboBox" name="TripSelectTeam">
-                        <property name="sizePolicy">
-                         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                          <horstretch>0</horstretch>
-                          <verstretch>0</verstretch>
-                         </sizepolicy>
-                        </property>
-                        <property name="maximumSize">
-                         <size>
-                          <width>16777215</width>
-                          <height>16777215</height>
-                         </size>
-                        </property>
-                        <property name="font">
-                         <font>
-                          <family>Calibri</family>
-                          <pointsize>12</pointsize>
-                         </font>
-                        </property>
-                       </widget>
-                      </item>
-                      <item>
-                       <widget class="QLabel" name="TeamLogo">
-                        <property name="sizePolicy">
-                         <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
-                          <horstretch>0</horstretch>
-                          <verstretch>0</verstretch>
-                         </sizepolicy>
-                        </property>
-                        <property name="maximumSize">
-                         <size>
-                          <width>400</width>
-                          <height>500</height>
-                         </size>
-                        </property>
-                        <property name="text">
-                         <string>[PICTURE OF EACH TEAM LOGO??]</string>
-                        </property>
-                        <property name="wordWrap">
-                         <bool>true</bool>
-                        </property>
-                       </widget>
+                       <layout class="QVBoxLayout" name="verticalLayout_5">
+                        <item>
+                         <widget class="QLabel" name="label_4">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>16777215</width>
+                            <height>100</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Calibri</family>
+                            <pointsize>16</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>Trip Planner</string>
+                          </property>
+                          <property name="alignment">
+                           <set>Qt::AlignCenter</set>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="label_8">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>16777215</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Calibri</family>
+                            <pointsize>12</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>Select a Team to start at</string>
+                          </property>
+                          <property name="alignment">
+                           <set>Qt::AlignCenter</set>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QComboBox" name="TripSelectTeam">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>16777215</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Calibri</family>
+                            <pointsize>12</pointsize>
+                           </font>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="Line" name="line_7">
+                          <property name="orientation">
+                           <enum>Qt::Horizontal</enum>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="TeamLogo">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>400</width>
+                            <height>500</height>
+                           </size>
+                          </property>
+                          <property name="text">
+                           <string>[PICTURE OF EACH TEAM LOGO??]</string>
+                          </property>
+                          <property name="wordWrap">
+                           <bool>true</bool>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="Line" name="line_6">
+                          <property name="orientation">
+                           <enum>Qt::Horizontal</enum>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <layout class="QHBoxLayout" name="horizontalLayout_11">
+                          <property name="sizeConstraint">
+                           <enum>QLayout::SetMaximumSize</enum>
+                          </property>
+                          <item>
+                           <spacer name="horizontalSpacer_7">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
+                          <item>
+                           <widget class="QPushButton" name="PlanTripButton">
+                            <property name="sizePolicy">
+                             <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+                              <horstretch>0</horstretch>
+                              <verstretch>0</verstretch>
+                             </sizepolicy>
+                            </property>
+                            <property name="maximumSize">
+                             <size>
+                              <width>300</width>
+                              <height>50</height>
+                             </size>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <family>Calibri</family>
+                              <pointsize>16</pointsize>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>Plan Trip</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <spacer name="horizontalSpacer_6">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeType">
+                             <enum>QSizePolicy::Maximum</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>50</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
+                          <item>
+                           <widget class="QPushButton" name="PlanTripDijkstra">
+                            <property name="sizePolicy">
+                             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                              <horstretch>0</horstretch>
+                              <verstretch>0</verstretch>
+                             </sizepolicy>
+                            </property>
+                            <property name="maximumSize">
+                             <size>
+                              <width>300</width>
+                              <height>50</height>
+                             </size>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <family>Calibri</family>
+                              <pointsize>16</pointsize>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>Plan Trip using Dijkstra</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <spacer name="horizontalSpacer_8">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
+                         </layout>
+                        </item>
+                       </layout>
                       </item>
                       <item>
                        <widget class="Line" name="line_5">
                         <property name="orientation">
-                         <enum>Qt::Horizontal</enum>
+                         <enum>Qt::Vertical</enum>
                         </property>
                        </widget>
-                      </item>
-                      <item>
-                       <layout class="QHBoxLayout" name="horizontalLayout_11">
-                        <property name="sizeConstraint">
-                         <enum>QLayout::SetMaximumSize</enum>
-                        </property>
-                        <item>
-                         <spacer name="horizontalSpacer_7">
-                          <property name="orientation">
-                           <enum>Qt::Horizontal</enum>
-                          </property>
-                          <property name="sizeHint" stdset="0">
-                           <size>
-                            <width>40</width>
-                            <height>20</height>
-                           </size>
-                          </property>
-                         </spacer>
-                        </item>
-                        <item>
-                         <widget class="QPushButton" name="PlanTripButton">
-                          <property name="sizePolicy">
-                           <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                           </sizepolicy>
-                          </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>300</width>
-                            <height>50</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <family>Calibri</family>
-                            <pointsize>16</pointsize>
-                           </font>
-                          </property>
-                          <property name="text">
-                           <string>Plan Trip</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <spacer name="horizontalSpacer_6">
-                          <property name="orientation">
-                           <enum>Qt::Horizontal</enum>
-                          </property>
-                          <property name="sizeType">
-                           <enum>QSizePolicy::Maximum</enum>
-                          </property>
-                          <property name="sizeHint" stdset="0">
-                           <size>
-                            <width>50</width>
-                            <height>20</height>
-                           </size>
-                          </property>
-                         </spacer>
-                        </item>
-                        <item>
-                         <widget class="QPushButton" name="PlanTripDijkstra">
-                          <property name="sizePolicy">
-                           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                           </sizepolicy>
-                          </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>300</width>
-                            <height>50</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <family>Calibri</family>
-                            <pointsize>16</pointsize>
-                           </font>
-                          </property>
-                          <property name="text">
-                           <string>Plan Trip using Dijkstra</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <spacer name="horizontalSpacer_8">
-                          <property name="orientation">
-                           <enum>Qt::Horizontal</enum>
-                          </property>
-                          <property name="sizeHint" stdset="0">
-                           <size>
-                            <width>40</width>
-                            <height>20</height>
-                           </size>
-                          </property>
-                         </spacer>
-                        </item>
-                       </layout>
                       </item>
                      </layout>
                     </widget>
-                    <widget class="QWidget" name="layoutWidget">
-                     <layout class="QVBoxLayout" name="verticalLayout_4">
+                    <widget class="QWidget" name="">
+                     <layout class="QHBoxLayout" name="horizontalLayout_16">
                       <item>
-                       <layout class="QHBoxLayout" name="horizontalLayout_10">
-                        <item>
-                         <spacer name="horizontalSpacer_2">
-                          <property name="orientation">
-                           <enum>Qt::Horizontal</enum>
-                          </property>
-                          <property name="sizeHint" stdset="0">
-                           <size>
-                            <width>40</width>
-                            <height>20</height>
-                           </size>
-                          </property>
-                         </spacer>
-                        </item>
-                        <item>
-                         <widget class="QLabel" name="label_5">
-                          <property name="sizePolicy">
-                           <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                           </sizepolicy>
-                          </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>250</width>
-                            <height>16777215</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <family>Calibri</family>
-                            <pointsize>16</pointsize>
-                            <weight>75</weight>
-                            <bold>true</bold>
-                           </font>
-                          </property>
-                          <property name="text">
-                           <string>Custom Trip Planner</string>
-                          </property>
-                          <property name="alignment">
-                           <set>Qt::AlignCenter</set>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <spacer name="horizontalSpacer_3">
-                          <property name="orientation">
-                           <enum>Qt::Horizontal</enum>
-                          </property>
-                          <property name="sizeHint" stdset="0">
-                           <size>
-                            <width>40</width>
-                            <height>20</height>
-                           </size>
-                          </property>
-                         </spacer>
-                        </item>
-                       </layout>
-                      </item>
-                      <item>
-                       <layout class="QGridLayout" name="gridLayout">
-                        <item row="1" column="1">
-                         <widget class="QListWidget" name="CustomTripSELECTED">
-                          <property name="font">
-                           <font>
-                            <family>Calibri</family>
-                            <pointsize>12</pointsize>
-                           </font>
-                          </property>
-                          <property name="toolTip">
-                           <string>Double Click the team you want to add to your trip!</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="1" column="0">
-                         <widget class="QListWidget" name="CustomTripSelect">
-                          <property name="font">
-                           <font>
-                            <family>Calibri</family>
-                            <pointsize>12</pointsize>
-                           </font>
-                          </property>
-                          <property name="toolTip">
-                           <string>Double Click the team you want to add to your trip!</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="0" column="0">
-                         <widget class="QLabel" name="label_7">
-                          <property name="sizePolicy">
-                           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                           </sizepolicy>
-                          </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>16777215</width>
-                            <height>16777215</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <family>Calibri</family>
-                            <pointsize>14</pointsize>
-                            <weight>75</weight>
-                            <bold>true</bold>
-                           </font>
-                          </property>
-                          <property name="text">
-                           <string>Select the Teams/Stadiums</string>
-                          </property>
-                          <property name="alignment">
-                           <set>Qt::AlignCenter</set>
-                          </property>
-                         </widget>
-                        </item>
-                        <item row="0" column="1">
-                         <widget class="QLabel" name="label_6">
-                          <property name="sizePolicy">
-                           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                           </sizepolicy>
-                          </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>16777215</width>
-                            <height>16777215</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <family>Calibri</family>
-                            <pointsize>14</pointsize>
-                            <weight>75</weight>
-                            <bold>true</bold>
-                           </font>
-                          </property>
-                          <property name="text">
-                           <string>Teams in order to visit</string>
-                          </property>
-                          <property name="alignment">
-                           <set>Qt::AlignCenter</set>
-                          </property>
-                         </widget>
-                        </item>
-                       </layout>
-                      </item>
-                      <item>
-                       <layout class="QHBoxLayout" name="horizontalLayout_9">
-                        <item>
-                         <spacer name="horizontalSpacer_4">
-                          <property name="orientation">
-                           <enum>Qt::Horizontal</enum>
-                          </property>
-                          <property name="sizeHint" stdset="0">
-                           <size>
-                            <width>40</width>
-                            <height>20</height>
-                           </size>
-                          </property>
-                         </spacer>
-                        </item>
-                        <item>
-                         <widget class="QPushButton" name="ResetTrip">
-                          <property name="maximumSize">
-                           <size>
-                            <width>250</width>
-                            <height>16777215</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <family>Calibri</family>
-                            <pointsize>12</pointsize>
-                           </font>
-                          </property>
-                          <property name="text">
-                           <string>Reset Custom Trip</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <spacer name="horizontalSpacer_5">
-                          <property name="orientation">
-                           <enum>Qt::Horizontal</enum>
-                          </property>
-                          <property name="sizeHint" stdset="0">
-                           <size>
-                            <width>40</width>
-                            <height>20</height>
-                           </size>
-                          </property>
-                         </spacer>
-                        </item>
-                       </layout>
-                      </item>
-                      <item>
-                       <widget class="Line" name="line_3">
+                       <widget class="Line" name="line_4">
                         <property name="orientation">
-                         <enum>Qt::Horizontal</enum>
+                         <enum>Qt::Vertical</enum>
                         </property>
                        </widget>
                       </item>
                       <item>
-                       <layout class="QHBoxLayout" name="horizontalLayout_17">
-                        <property name="sizeConstraint">
-                         <enum>QLayout::SetMaximumSize</enum>
-                        </property>
+                       <layout class="QVBoxLayout" name="verticalLayout_4">
                         <item>
-                         <widget class="QPushButton" name="PlanCustomTripButton">
-                          <property name="sizePolicy">
-                           <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                           </sizepolicy>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <family>Calibri</family>
-                            <pointsize>16</pointsize>
-                           </font>
-                          </property>
-                          <property name="text">
-                           <string>Plan Custom  Trip</string>
+                         <layout class="QHBoxLayout" name="horizontalLayout_10">
+                          <item>
+                           <spacer name="horizontalSpacer_2">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
+                          <item>
+                           <widget class="QLabel" name="label_5">
+                            <property name="sizePolicy">
+                             <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+                              <horstretch>0</horstretch>
+                              <verstretch>0</verstretch>
+                             </sizepolicy>
+                            </property>
+                            <property name="maximumSize">
+                             <size>
+                              <width>250</width>
+                              <height>16777215</height>
+                             </size>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <family>Calibri</family>
+                              <pointsize>16</pointsize>
+                              <weight>75</weight>
+                              <bold>true</bold>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>Custom Trip Planner</string>
+                            </property>
+                            <property name="alignment">
+                             <set>Qt::AlignCenter</set>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <spacer name="horizontalSpacer_3">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
+                         </layout>
+                        </item>
+                        <item>
+                         <layout class="QGridLayout" name="gridLayout">
+                          <item row="1" column="0">
+                           <widget class="QListWidget" name="CustomTripSelect">
+                            <property name="font">
+                             <font>
+                              <family>Calibri</family>
+                              <pointsize>12</pointsize>
+                             </font>
+                            </property>
+                            <property name="toolTip">
+                             <string>Double Click the team you want to add to your trip!</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item row="0" column="1">
+                           <widget class="QLabel" name="label_6">
+                            <property name="sizePolicy">
+                             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                              <horstretch>0</horstretch>
+                              <verstretch>0</verstretch>
+                             </sizepolicy>
+                            </property>
+                            <property name="maximumSize">
+                             <size>
+                              <width>16777215</width>
+                              <height>16777215</height>
+                             </size>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <family>Calibri</family>
+                              <pointsize>14</pointsize>
+                              <weight>75</weight>
+                              <bold>true</bold>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>Teams in order to visit</string>
+                            </property>
+                            <property name="alignment">
+                             <set>Qt::AlignCenter</set>
+                            </property>
+                           </widget>
+                          </item>
+                          <item row="0" column="0">
+                           <widget class="QLabel" name="label_7">
+                            <property name="sizePolicy">
+                             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                              <horstretch>0</horstretch>
+                              <verstretch>0</verstretch>
+                             </sizepolicy>
+                            </property>
+                            <property name="maximumSize">
+                             <size>
+                              <width>16777215</width>
+                              <height>16777215</height>
+                             </size>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <family>Calibri</family>
+                              <pointsize>14</pointsize>
+                              <weight>75</weight>
+                              <bold>true</bold>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>Select the Teams/Stadiums</string>
+                            </property>
+                            <property name="alignment">
+                             <set>Qt::AlignCenter</set>
+                            </property>
+                           </widget>
+                          </item>
+                          <item row="1" column="1">
+                           <widget class="QListWidget" name="CustomTripSELECTED">
+                            <property name="font">
+                             <font>
+                              <family>Calibri</family>
+                              <pointsize>12</pointsize>
+                             </font>
+                            </property>
+                            <property name="toolTip">
+                             <string>Double Click the team you want to add to your trip!</string>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </item>
+                        <item>
+                         <layout class="QHBoxLayout" name="horizontalLayout_9">
+                          <item>
+                           <spacer name="horizontalSpacer_4">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
+                          <item>
+                           <widget class="QPushButton" name="ResetTrip">
+                            <property name="maximumSize">
+                             <size>
+                              <width>250</width>
+                              <height>16777215</height>
+                             </size>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <family>Calibri</family>
+                              <pointsize>12</pointsize>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>Reset Custom Trip</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <spacer name="horizontalSpacer_5">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
+                         </layout>
+                        </item>
+                        <item>
+                         <widget class="Line" name="line_3">
+                          <property name="orientation">
+                           <enum>Qt::Horizontal</enum>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QPushButton" name="PlanCustomTripDijkstra">
-                          <property name="sizePolicy">
-                           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                           </sizepolicy>
+                         <layout class="QHBoxLayout" name="horizontalLayout_17">
+                          <property name="sizeConstraint">
+                           <enum>QLayout::SetMaximumSize</enum>
                           </property>
-                          <property name="font">
-                           <font>
-                            <family>Calibri</family>
-                            <pointsize>16</pointsize>
-                           </font>
-                          </property>
-                          <property name="text">
-                           <string>Plan Custom Trip using Dijkstra</string>
-                          </property>
-                         </widget>
+                          <item>
+                           <widget class="QPushButton" name="PlanCustomTripButton">
+                            <property name="sizePolicy">
+                             <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+                              <horstretch>0</horstretch>
+                              <verstretch>0</verstretch>
+                             </sizepolicy>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <family>Calibri</family>
+                              <pointsize>16</pointsize>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>Plan Custom  Trip</string>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
                         </item>
                        </layout>
                       </item>
@@ -750,166 +838,198 @@ html.solid {border-style: solid;}
                 <widget class="QWidget" name="Souvenirs">
                  <layout class="QHBoxLayout" name="horizontalLayout_15">
                   <item>
-                   <widget class="QSplitter" name="splitter_2">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <widget class="QWidget" name="layoutWidget">
-                     <layout class="QVBoxLayout" name="verticalLayout_6">
+                   <layout class="QVBoxLayout" name="verticalLayout_6">
+                    <item>
+                     <widget class="QLabel" name="label_9">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>400</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <family>Calibri</family>
+                        <pointsize>16</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>Stadiums in order.</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QTableWidget" name="TripTable">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>350</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
+                      <property name="verticalScrollBarPolicy">
+                       <enum>Qt::ScrollBarAlwaysOff</enum>
+                      </property>
+                      <property name="horizontalScrollBarPolicy">
+                       <enum>Qt::ScrollBarAlwaysOff</enum>
+                      </property>
+                      <property name="sizeAdjustPolicy">
+                       <enum>QAbstractScrollArea::AdjustToContents</enum>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="DistanceTravelled">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>400</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <family>Calibri</family>
+                        <pointsize>14</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>Total Distance Travelled: </string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="TotalCost">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>400</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <family>Calibri</family>
+                        <pointsize>14</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>Total Cost: </string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="CompleteTrip">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Maximum" vsizetype="Minimum">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>350</width>
+                        <height>30</height>
+                       </size>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <family>Calibri</family>
+                        <pointsize>16</pointsize>
+                        <weight>75</weight>
+                        <italic>true</italic>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>Complete Trip</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <layout class="QVBoxLayout" name="verticalLayout_8">
+                    <item>
+                     <widget class="QTextEdit" name="StadiumTripInfo">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <family>Calibri</family>
+                        <pointsize>12</pointsize>
+                       </font>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <layout class="QHBoxLayout" name="horizontalLayout_12">
                       <item>
-                       <widget class="QLabel" name="label_9">
-                        <property name="sizePolicy">
-                         <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
-                          <horstretch>0</horstretch>
-                          <verstretch>0</verstretch>
-                         </sizepolicy>
+                       <spacer name="horizontalSpacer_10">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
                         </property>
-                        <property name="maximumSize">
+                        <property name="sizeHint" stdset="0">
                          <size>
-                          <width>400</width>
-                          <height>16777215</height>
+                          <width>40</width>
+                          <height>20</height>
                          </size>
                         </property>
-                        <property name="font">
-                         <font>
-                          <family>Calibri</family>
-                          <pointsize>16</pointsize>
-                          <weight>75</weight>
-                          <bold>true</bold>
-                         </font>
-                        </property>
-                        <property name="text">
-                         <string>Stadiums in order.</string>
-                        </property>
-                        <property name="alignment">
-                         <set>Qt::AlignCenter</set>
-                        </property>
-                       </widget>
+                       </spacer>
                       </item>
                       <item>
-                       <widget class="QTableWidget" name="TripTable">
+                       <widget class="QPushButton" name="PrevStadium">
                         <property name="sizePolicy">
-                         <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
+                         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
                           <horstretch>0</horstretch>
                           <verstretch>0</verstretch>
                          </sizepolicy>
                         </property>
                         <property name="maximumSize">
                          <size>
-                          <width>400</width>
-                          <height>16777215</height>
-                         </size>
-                        </property>
-                        <property name="verticalScrollBarPolicy">
-                         <enum>Qt::ScrollBarAlwaysOff</enum>
-                        </property>
-                        <property name="horizontalScrollBarPolicy">
-                         <enum>Qt::ScrollBarAlwaysOff</enum>
-                        </property>
-                        <property name="sizeAdjustPolicy">
-                         <enum>QAbstractScrollArea::AdjustToContents</enum>
-                        </property>
-                       </widget>
-                      </item>
-                      <item>
-                       <widget class="QLabel" name="DistanceTravelled">
-                        <property name="sizePolicy">
-                         <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
-                          <horstretch>0</horstretch>
-                          <verstretch>0</verstretch>
-                         </sizepolicy>
-                        </property>
-                        <property name="maximumSize">
-                         <size>
-                          <width>400</width>
-                          <height>16777215</height>
-                         </size>
-                        </property>
-                        <property name="font">
-                         <font>
-                          <family>Calibri</family>
-                          <pointsize>14</pointsize>
-                          <weight>75</weight>
-                          <bold>true</bold>
-                         </font>
-                        </property>
-                        <property name="text">
-                         <string>Total Distance Travelled: </string>
-                        </property>
-                        <property name="alignment">
-                         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                        </property>
-                       </widget>
-                      </item>
-                      <item>
-                       <widget class="QLabel" name="TotalCost">
-                        <property name="sizePolicy">
-                         <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
-                          <horstretch>0</horstretch>
-                          <verstretch>0</verstretch>
-                         </sizepolicy>
-                        </property>
-                        <property name="maximumSize">
-                         <size>
-                          <width>400</width>
-                          <height>16777215</height>
-                         </size>
-                        </property>
-                        <property name="font">
-                         <font>
-                          <family>Calibri</family>
-                          <pointsize>14</pointsize>
-                          <weight>75</weight>
-                          <bold>true</bold>
-                         </font>
-                        </property>
-                        <property name="text">
-                         <string>Total Cost: </string>
-                        </property>
-                        <property name="alignment">
-                         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                        </property>
-                       </widget>
-                      </item>
-                      <item>
-                       <widget class="QPushButton" name="PlanTripDijkstra_5">
-                        <property name="sizePolicy">
-                         <sizepolicy hsizetype="Maximum" vsizetype="Minimum">
-                          <horstretch>0</horstretch>
-                          <verstretch>0</verstretch>
-                         </sizepolicy>
-                        </property>
-                        <property name="maximumSize">
-                         <size>
-                          <width>400</width>
+                          <width>250</width>
                           <height>30</height>
                          </size>
-                        </property>
-                        <property name="font">
-                         <font>
-                          <family>Calibri</family>
-                          <pointsize>16</pointsize>
-                          <weight>75</weight>
-                          <italic>true</italic>
-                          <bold>true</bold>
-                         </font>
-                        </property>
-                        <property name="text">
-                         <string>Complete Trip</string>
-                        </property>
-                       </widget>
-                      </item>
-                     </layout>
-                    </widget>
-                    <widget class="QWidget" name="layoutWidget">
-                     <layout class="QVBoxLayout" name="verticalLayout_8">
-                      <item>
-                       <widget class="QTextEdit" name="StadiumTripInfo">
-                        <property name="sizePolicy">
-                         <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-                          <horstretch>0</horstretch>
-                          <verstretch>0</verstretch>
-                         </sizepolicy>
                         </property>
                         <property name="font">
                          <font>
@@ -917,105 +1037,113 @@ html.solid {border-style: solid;}
                           <pointsize>12</pointsize>
                          </font>
                         </property>
+                        <property name="text">
+                         <string>Previous Stadium</string>
+                        </property>
                        </widget>
                       </item>
                       <item>
-                       <layout class="QHBoxLayout" name="horizontalLayout_12">
-                        <item>
-                         <spacer name="horizontalSpacer_10">
-                          <property name="orientation">
-                           <enum>Qt::Horizontal</enum>
-                          </property>
-                          <property name="sizeHint" stdset="0">
-                           <size>
-                            <width>40</width>
-                            <height>20</height>
-                           </size>
-                          </property>
-                         </spacer>
-                        </item>
-                        <item>
-                         <widget class="QPushButton" name="PrevStadium">
-                          <property name="sizePolicy">
-                           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                           </sizepolicy>
-                          </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>250</width>
-                            <height>30</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <family>Calibri</family>
-                            <pointsize>12</pointsize>
-                           </font>
-                          </property>
-                          <property name="text">
-                           <string>Previous Stadium</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <spacer name="horizontalSpacer_9">
-                          <property name="orientation">
-                           <enum>Qt::Horizontal</enum>
-                          </property>
-                          <property name="sizeHint" stdset="0">
-                           <size>
-                            <width>40</width>
-                            <height>20</height>
-                           </size>
-                          </property>
-                         </spacer>
-                        </item>
-                        <item>
-                         <widget class="QPushButton" name="NextStadium">
-                          <property name="sizePolicy">
-                           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                           </sizepolicy>
-                          </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>250</width>
-                            <height>30</height>
-                           </size>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <family>Calibri</family>
-                            <pointsize>12</pointsize>
-                           </font>
-                          </property>
-                          <property name="text">
-                           <string>Next Stadium</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <spacer name="horizontalSpacer_11">
-                          <property name="orientation">
-                           <enum>Qt::Horizontal</enum>
-                          </property>
-                          <property name="sizeHint" stdset="0">
-                           <size>
-                            <width>40</width>
-                            <height>20</height>
-                           </size>
-                          </property>
-                         </spacer>
-                        </item>
-                       </layout>
+                       <spacer name="horizontalSpacer_9">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>40</width>
+                          <height>20</height>
+                         </size>
+                        </property>
+                       </spacer>
                       </item>
                       <item>
-                       <layout class="QHBoxLayout" name="horizontalLayout_14">
+                       <widget class="QPushButton" name="NextStadium">
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>250</width>
+                          <height>30</height>
+                         </size>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <family>Calibri</family>
+                          <pointsize>12</pointsize>
+                         </font>
+                        </property>
+                        <property name="text">
+                         <string>Next Stadium</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <spacer name="horizontalSpacer_11">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>40</width>
+                          <height>20</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                     </layout>
+                    </item>
+                    <item>
+                     <layout class="QHBoxLayout" name="horizontalLayout_14">
+                      <item>
+                       <widget class="QLabel" name="label_12">
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>200</width>
+                          <height>200</height>
+                         </size>
+                        </property>
+                        <property name="text">
+                         <string>[PICTURE?]</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <layout class="QVBoxLayout" name="verticalLayout_7">
                         <item>
-                         <widget class="QLabel" name="label_12">
+                         <widget class="QLabel" name="BuyHeader">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Calibri</family>
+                            <pointsize>14</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>Stadium's Souvenirs</string>
+                          </property>
+                          <property name="alignment">
+                           <set>Qt::AlignCenter</set>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QTableWidget" name="Souvenir">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
                             <horstretch>0</horstretch>
@@ -1024,53 +1152,32 @@ html.solid {border-style: solid;}
                           </property>
                           <property name="maximumSize">
                            <size>
-                            <width>200</width>
-                            <height>200</height>
+                            <width>16777215</width>
+                            <height>300</height>
                            </size>
                           </property>
-                          <property name="text">
-                           <string>[PICTURE?]</string>
+                          <property name="font">
+                           <font>
+                            <family>Calibri</family>
+                            <pointsize>12</pointsize>
+                           </font>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <layout class="QVBoxLayout" name="verticalLayout_7">
+                         <layout class="QHBoxLayout" name="horizontalLayout_13">
                           <item>
-                           <widget class="QLabel" name="BuyHeader">
+                           <widget class="QPushButton" name="ResetSouvenir">
                             <property name="sizePolicy">
-                             <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-                              <horstretch>0</horstretch>
-                              <verstretch>0</verstretch>
-                             </sizepolicy>
-                            </property>
-                            <property name="font">
-                             <font>
-                              <family>Calibri</family>
-                              <pointsize>14</pointsize>
-                              <weight>75</weight>
-                              <bold>true</bold>
-                             </font>
-                            </property>
-                            <property name="text">
-                             <string>Stadium's Souvenirs</string>
-                            </property>
-                            <property name="alignment">
-                             <set>Qt::AlignCenter</set>
-                            </property>
-                           </widget>
-                          </item>
-                          <item>
-                           <widget class="QTableWidget" name="Souvenir">
-                            <property name="sizePolicy">
-                             <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+                             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
                               <horstretch>0</horstretch>
                               <verstretch>0</verstretch>
                              </sizepolicy>
                             </property>
                             <property name="maximumSize">
                              <size>
-                              <width>16777215</width>
-                              <height>300</height>
+                              <width>250</width>
+                              <height>30</height>
                              </size>
                             </property>
                             <property name="font">
@@ -1079,82 +1186,56 @@ html.solid {border-style: solid;}
                               <pointsize>12</pointsize>
                              </font>
                             </property>
+                            <property name="text">
+                             <string>Reset</string>
+                            </property>
                            </widget>
                           </item>
                           <item>
-                           <layout class="QHBoxLayout" name="horizontalLayout_13">
-                            <item>
-                             <widget class="QPushButton" name="ResetSouvenir">
-                              <property name="sizePolicy">
-                               <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-                                <horstretch>0</horstretch>
-                                <verstretch>0</verstretch>
-                               </sizepolicy>
-                              </property>
-                              <property name="maximumSize">
-                               <size>
-                                <width>250</width>
-                                <height>30</height>
-                               </size>
-                              </property>
-                              <property name="font">
-                               <font>
-                                <family>Calibri</family>
-                                <pointsize>12</pointsize>
-                               </font>
-                              </property>
-                              <property name="text">
-                               <string>Reset</string>
-                              </property>
-                             </widget>
-                            </item>
-                            <item>
-                             <spacer name="horizontalSpacer_12">
-                              <property name="orientation">
-                               <enum>Qt::Horizontal</enum>
-                              </property>
-                              <property name="sizeHint" stdset="0">
-                               <size>
-                                <width>40</width>
-                                <height>20</height>
-                               </size>
-                              </property>
-                             </spacer>
-                            </item>
-                            <item>
-                             <widget class="QPushButton" name="BuySouvenir">
-                              <property name="sizePolicy">
-                               <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-                                <horstretch>0</horstretch>
-                                <verstretch>0</verstretch>
-                               </sizepolicy>
-                              </property>
-                              <property name="maximumSize">
-                               <size>
-                                <width>250</width>
-                                <height>30</height>
-                               </size>
-                              </property>
-                              <property name="font">
-                               <font>
-                                <family>Calibri</family>
-                                <pointsize>12</pointsize>
-                               </font>
-                              </property>
-                              <property name="text">
-                               <string>Buy</string>
-                              </property>
-                             </widget>
-                            </item>
-                           </layout>
+                           <spacer name="horizontalSpacer_12">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
+                          <item>
+                           <widget class="QPushButton" name="BuySouvenir">
+                            <property name="sizePolicy">
+                             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                              <horstretch>0</horstretch>
+                              <verstretch>0</verstretch>
+                             </sizepolicy>
+                            </property>
+                            <property name="maximumSize">
+                             <size>
+                              <width>250</width>
+                              <height>30</height>
+                             </size>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <family>Calibri</family>
+                              <pointsize>12</pointsize>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>Buy</string>
+                            </property>
+                           </widget>
                           </item>
                          </layout>
                         </item>
                        </layout>
                       </item>
                      </layout>
-                    </widget>
-                   </widget>
+                    </item>
+                   </layout>
                   </item>
                  </layout>
                 </widget>
@@ -1654,13 +1735,15 @@ html.solid {border-style: solid;}
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1080</width>
-     <height>26</height>
+     <width>1137</width>
+     <height>20</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="rec.qrc"/>
+ </resources>
  <connections/>
 </ui>

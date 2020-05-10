@@ -47,5 +47,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 RESOURCES += \
     rec.qrc
 
-DISTFILES += \
-    mlb.png
+DISTFILES +=

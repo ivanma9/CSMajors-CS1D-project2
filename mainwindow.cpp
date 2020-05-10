@@ -29,11 +29,10 @@ MainWindow::MainWindow(QWidget *parent)
     ReadSouvenirs();
 
     ui->PlanTripStacked->setCurrentIndex(0);
-
+    ui->MainPageTabs->setCurrentIndex(0);
     //WILL set the admin modify table to the 1st team
     //IT MIGHT CRASH if there is nothing to load from
     on_SelectTeam_currentIndexChanged(0);
-
 
     setupDisplayListTab();
     setupTeamInfoTab();
@@ -219,7 +218,7 @@ void MainWindow::setupTeamInfoTab()
     {
         ui->listWidget->insertItem(i,mblInfo[i].TeamName); // list in info
         ui->SelectTeam->insertItem(i,mblInfo[i].TeamName); // list in admin
-        ui->CustomTripSelect->insertItem(i,mblInfo[i].TeamName +" ("+ mblInfo[i].StadiumName + ")"); // list in plan trip
+        ui->CustomTripSelect->insertItem(i,mblInfo[i].TeamName +", "+ mblInfo[i].StadiumName); // list in plan trip
 
     }
 
@@ -485,7 +484,7 @@ void MainWindow::on_pushButton_TeamInfo_clicked()
         ui->textEdit->setFontPointSize(24);
 
         ui->textEdit->setAlignment(Qt::AlignCenter);
-        ui->textEdit->insertPlainText("\nStadium:");
+        ui->textEdit->insertPlainText("\n\nStadium:");
         ui->textEdit->setFontUnderline(false);
         ui->textEdit->insertPlainText(" " +mblInfo[currRow].StadiumName);
         ui->textEdit->setFontPointSize(20);
@@ -637,151 +636,148 @@ void MainWindow::on_ModifyTable_itemChanged(QTableWidgetItem *item)
 
         switch(rowAt)
         {
-           case 0: // TeamName was changed
-            mblInfo[selected].TeamName = ui->ModifyTable->item(0,0)->text();
-            ui->listWidget->item(selected)->setText(mblInfo[selected].TeamName);
+        case 0: // TeamName was changed
+        mblInfo[selected].TeamName = ui->ModifyTable->item(0,0)->text();
+        ui->listWidget->item(selected)->setText(mblInfo[selected].TeamName);
 
-            //Updates ComboBoxes
-            listEdit = ui->listWidget->item(selected);
-            listEdit->setText(mblInfo[selected].TeamName);
-            ui->listWidget->setCurrentItem(listEdit);
-            ui->SelectTeam->setItemText(selected, mblInfo[selected].TeamName);
-            ui->CustomSelect->setItemText(selected, mblInfo[selected].TeamName +" ("+ mblInfo[selected].StadiumName + ")");
+        //Updates ComboBoxes
+        listEdit = ui->listWidget->item(selected);
+        listEdit->setText(mblInfo[selected].TeamName);
+        ui->listWidget->setCurrentItem(listEdit);
+        ui->SelectTeam->setItemText(selected, mblInfo[selected].TeamName);
+        ui->CustomSelect->setItemText(selected, mblInfo[selected].TeamName +" ("+ mblInfo[selected].StadiumName + ")");
 
-            //SQL Update
-            updateQuery.prepare("UPDATE MLBInformation SET TeamName = :teamname WHERE itemID = :index");
-            updateQuery.bindValue(":teamname", mblInfo[selected].TeamName);
-            updateQuery.bindValue(":index", selected+1);
+        //SQL Update
+        updateQuery.prepare("UPDATE MLBInformation SET TeamName = :teamname WHERE StadiumName = :index");
+        updateQuery.bindValue(":teamname", mblInfo[selected].TeamName);
+        updateQuery.bindValue(":index", mblInfo[selected].StadiumName);
 
-           break;
+        break;
 
-           case 1: // StadiumName was changed
-            mblInfo[selected].StadiumName = ui->ModifyTable->item(1,0)->text();
+        case 1: // StadiumName was changed
+        mblInfo[selected].StadiumName = ui->ModifyTable->item(1,0)->text();
 
-            ui->CustomSelect->setItemText(selected, mblInfo[selected].TeamName +" ("+ mblInfo[selected].StadiumName + ")");
-
-
-            //SQL Update
-            updateQuery.prepare("UPDATE MLBInformation SET StadiumName = :stadiumname WHERE itemID = :index");
-            updateQuery.bindValue(":stadiumname", mblInfo[selected].StadiumName);
-            updateQuery.bindValue(":index", selected+1);
-
-           break;
-
-           case 2: // SeatingCapacity was changed
-            if((convertNum=(ui->ModifyTable->item(2,0)->text()).toInt()))
-                mblInfo[selected].SeatingCapacity = convertNum;
-            else
-            {
-                QMessageBox::warning(this, tr("Invalid Seating Capacity"),
-                                          "Cannot read the input. Can only put in a number.\n\nPlease try again!");
-                ui->ModifyTable->item(2,0)->setText(QString::number(mblInfo[selected].SeatingCapacity));
-            }
-
-            //SQL Update
-            updateQuery.prepare("UPDATE MLBInformation SET SeatingCapacity = :seatingcapacity WHERE itemID = :index");
-            updateQuery.bindValue(":seatingcapacity", mblInfo[selected].SeatingCapacity);
-            updateQuery.bindValue(":index", selected+1);
-
-           break;
-
-           case 3: // Location was changed
-            mblInfo[selected].Location = ui->ModifyTable->item(3,0)->text();
-
-            //SQL Update
-            updateQuery.prepare("UPDATE MLBInformation SET Location = :location WHERE itemID = :index");
-            updateQuery.bindValue(":location", mblInfo[selected].Location);
-            updateQuery.bindValue(":index", selected+1);
-           break;
-
-           case 4: // PlayingSurface was changed
-            mblInfo[selected].PlayingSurface = ui->ModifyTable->item(4,0)->text();
-
-            //SQL Update
-            updateQuery.prepare("UPDATE MLBInformation SET Location = :location WHERE itemID = :index");
-            updateQuery.bindValue(":location", mblInfo[selected].Location);
-            updateQuery.bindValue(":index", selected+1);
-           break;
-
-           case 5: // League was changed
-            mblInfo[selected].League = ui->ModifyTable->item(5,0)->text();
-
-            //SQL Update
-            updateQuery.prepare("UPDATE MLBInformation SET Location = :location WHERE itemID = :index");
-            updateQuery.bindValue(":location", mblInfo[selected].Location);
-            updateQuery.bindValue(":index", selected+1);
-           break;
-
-           case 6: // DateOpened was changed
-            if((convertNum=(ui->ModifyTable->item(6,0)->text()).toInt()))
-                mblInfo[selected].DateOpened = convertNum;
-            else
-            {
-                QMessageBox::warning(this, tr("Invalid Date Opened"),
-                                          "Cannot read the input. Can only put in a number.\n\nPlease try again!");
-                ui->ModifyTable->item(6,0)->setText(QString::number(mblInfo[selected].SeatingCapacity));
-            }
-
-            //SQL Update
-            updateQuery.prepare("UPDATE MLBInformation SET DateOpened = :dateopened WHERE itemID = :index");
-            updateQuery.bindValue(":dateopened", mblInfo[selected].DateOpened);
-            updateQuery.bindValue(":index", selected+1);
-           break;
-
-           case 7: // DistanceFT was changed
-            if((convertNum=(ui->ModifyTable->item(7,0)->text()).toInt()))
-                mblInfo[selected].DistanceFT = convertNum;
-            else
-            {
-                QMessageBox::warning(this, tr("Invalid Distance in feet"),
-                                          "Cannot read the input. Can only put in a number.\n\nPlease try again!");
-                ui->ModifyTable->item(7,0)->setText(QString::number(mblInfo[selected].SeatingCapacity));
-            }
-
-            //SQL Update
-            updateQuery.prepare("UPDATE MLBInformation SET DistanceToCenterFieldFT = :distanceft WHERE itemID = :index");
-            updateQuery.bindValue(":distanceft", mblInfo[selected].DistanceFT);
-            updateQuery.bindValue(":index", selected+1);
-           break;
-
-           case 8: // DistanceMeter was changed
-            if((convertNum=(ui->ModifyTable->item(8,0)->text()).toInt()))
-                mblInfo[selected].DistanceMeter = convertNum;
-            else
-            {
-                QMessageBox::warning(this, tr("Invalid Distance in meters"),
-                                          "Cannot read the input. Can only put in a number.\n\nPlease try again!");
-                ui->ModifyTable->item(8,0)->setText(QString::number(mblInfo[selected].SeatingCapacity));
-            }
-            //SQL Update
-            updateQuery.prepare("UPDATE MLBInformation SET DistanceToCenterFieldM = :distancemeter WHERE itemID = :index");
-            updateQuery.bindValue(":distancemeter", mblInfo[selected].DistanceMeter);
-            updateQuery.bindValue(":index", selected+1);
-           break;
-
-           case 9: // BallparkTypology was changed
-            mblInfo[selected].BallparkTypology = ui->ModifyTable->item(9,0)->text();
-
-            //SQL Update
-            updateQuery.prepare("UPDATE MLBInformation SET BallparkTypology = :ballparktypology WHERE itemID = :index");
-            updateQuery.bindValue(":ballparktypology", mblInfo[selected].BallparkTypology);
-            updateQuery.bindValue(":index", selected+1);
-           break;
+        ui->CustomSelect->setItemText(selected, mblInfo[selected].TeamName +" ("+ mblInfo[selected].StadiumName + ")");
 
 
-           case 10: // RoofType was changed
-            mblInfo[selected].RoofType = ui->ModifyTable->item(10,0)->text();
+        //SQL Update
+        updateQuery.prepare("UPDATE MLBInformation SET StadiumName = :stadiumname WHERE TeamName = :index");
+        updateQuery.bindValue(":stadiumname", mblInfo[selected].StadiumName);
+        updateQuery.bindValue(":index", mblInfo[selected].TeamName);
 
-            //SQL Update
-            updateQuery.prepare("UPDATE MLBInformation SET RoofType = :rooftype WHERE itemID = :index");
-            updateQuery.bindValue(":rooftype", mblInfo[selected].RoofType);
-            updateQuery.bindValue(":index", selected+1);
-           break;
+        break;
 
-
-
-
+        case 2: // SeatingCapacity was changed
+        if((convertNum=(ui->ModifyTable->item(2,0)->text()).toInt()))
+        mblInfo[selected].SeatingCapacity = convertNum;
+        else
+        {
+        QMessageBox::warning(this, tr("Invalid Seating Capacity"),
+                      "Cannot read the input. Can only put in a number.\n\nPlease try again!");
+        ui->ModifyTable->item(2,0)->setText(QString::number(mblInfo[selected].SeatingCapacity));
         }
+
+        //SQL Update
+        updateQuery.prepare("UPDATE MLBInformation SET SeatingCapacity = :seatingcapacity WHERE TeamName = :index");
+        updateQuery.bindValue(":seatingcapacity", mblInfo[selected].SeatingCapacity);
+        updateQuery.bindValue(":index", mblInfo[selected].TeamName);
+
+        break;
+
+        case 3: // Location was changed
+        mblInfo[selected].Location = ui->ModifyTable->item(3,0)->text();
+
+        //SQL Update
+        updateQuery.prepare("UPDATE MLBInformation SET Location = :location WHERE TeamName = :index");
+        updateQuery.bindValue(":location", mblInfo[selected].Location);
+        updateQuery.bindValue(":index", mblInfo[selected].TeamName);
+        break;
+
+        case 4: // PlayingSurface was changed
+        mblInfo[selected].PlayingSurface = ui->ModifyTable->item(4,0)->text();
+
+        //SQL Update
+        updateQuery.prepare("UPDATE MLBInformation SET Location = :location WHERE TeamName = :index");
+        updateQuery.bindValue(":location", mblInfo[selected].Location);
+        updateQuery.bindValue(":index", mblInfo[selected].TeamName);
+        break;
+
+        case 5: // League was changed
+        mblInfo[selected].League = ui->ModifyTable->item(5,0)->text();
+
+        //SQL Update
+        updateQuery.prepare("UPDATE MLBInformation SET Location = :location WHERE TeamName = :index");
+        updateQuery.bindValue(":location", mblInfo[selected].Location);
+        updateQuery.bindValue(":index", mblInfo[selected].TeamName);
+        break;
+
+        case 6: // DateOpened was changed
+        if((convertNum=(ui->ModifyTable->item(6,0)->text()).toInt()))
+        mblInfo[selected].DateOpened = convertNum;
+        else
+        {
+        QMessageBox::warning(this, tr("Invalid Date Opened"),
+                      "Cannot read the input. Can only put in a number.\n\nPlease try again!");
+        ui->ModifyTable->item(6,0)->setText(QString::number(mblInfo[selected].SeatingCapacity));
+        }
+
+        //SQL Update
+        updateQuery.prepare("UPDATE MLBInformation SET DateOpened = :dateopened WHERE TeamName = :index");
+        updateQuery.bindValue(":dateopened", mblInfo[selected].DateOpened);
+        updateQuery.bindValue(":index", mblInfo[selected].TeamName);
+        break;
+
+        case 7: // DistanceFT was changed
+        if((convertNum=(ui->ModifyTable->item(7,0)->text()).toInt()))
+        mblInfo[selected].DistanceFT = convertNum;
+        else
+        {
+        QMessageBox::warning(this, tr("Invalid Distance in feet"),
+                      "Cannot read the input. Can only put in a number.\n\nPlease try again!");
+        ui->ModifyTable->item(7,0)->setText(QString::number(mblInfo[selected].SeatingCapacity));
+        }
+
+        //SQL Update
+        updateQuery.prepare("UPDATE MLBInformation SET DistanceToCenterFieldFT = :distanceft WHERE TeamName = :index");
+        updateQuery.bindValue(":distanceft", mblInfo[selected].DistanceFT);
+        updateQuery.bindValue(":index", mblInfo[selected].TeamName);
+        break;
+
+        case 8: // DistanceMeter was changed
+        if((convertNum=(ui->ModifyTable->item(8,0)->text()).toInt()))
+        mblInfo[selected].DistanceMeter = convertNum;
+        else
+        {
+        QMessageBox::warning(this, tr("Invalid Distance in meters"),
+                      "Cannot read the input. Can only put in a number.\n\nPlease try again!");
+        ui->ModifyTable->item(8,0)->setText(QString::number(mblInfo[selected].SeatingCapacity));
+        }
+        //SQL Update
+        updateQuery.prepare("UPDATE MLBInformation SET DistanceToCenterFieldM = :distancemeter WHERE TeamName = :index");
+        updateQuery.bindValue(":distancemeter", mblInfo[selected].DistanceMeter);
+        updateQuery.bindValue(":index", mblInfo[selected].TeamName);
+        break;
+
+        case 9: // BallparkTypology was changed
+        mblInfo[selected].BallparkTypology = ui->ModifyTable->item(9,0)->text();
+
+        //SQL Update
+        updateQuery.prepare("UPDATE MLBInformation SET BallparkTypology = :ballparktypology WHERE TeamName = :index");
+        updateQuery.bindValue(":ballparktypology", mblInfo[selected].BallparkTypology);
+        updateQuery.bindValue(":index", mblInfo[selected].TeamName);
+        break;
+
+
+        case 10: // RoofType was changed
+        mblInfo[selected].RoofType = ui->ModifyTable->item(10,0)->text();
+
+        //SQL Update
+        updateQuery.prepare("UPDATE MLBInformation SET RoofType = :rooftype WHERE TeamName = :index");
+        updateQuery.bindValue(":rooftype", mblInfo[selected].RoofType);
+        updateQuery.bindValue(":index", mblInfo[selected].TeamName);
+        break;
+
+        }//END Switch(rowAt) //
         QList<Souvenir> itemSouv = souvenirs.getSouvenir(mblInfo[selected].StadiumName);
         if(rowAt >= 11 && rowAt <= 11+itemSouv.size())
         {
@@ -928,22 +924,27 @@ void MainWindow::UpdateCustomTable(QList<TableOutput> output)
 
 void MainWindow::on_CustomTripSelect_itemDoubleClicked(QListWidgetItem *item)
 {
-    int row = ui->CustomTripSelect->currentRow();
 
-    QStringList tranfer = item->text().split(" (", QString::SkipEmptyParts);
-
-    ui->CustomTripSelect->takeItem(row);//remove from left list
+    ui->CustomTripSelect->takeItem(ui->CustomTripSelect->currentRow());//remove from left list
     // add to the right list
-    ui->CustomTripSELECTED->insertItem(row,tranfer[0]);
+    ui->CustomTripSELECTED->addItem(item->text());
 
+}
+
+void MainWindow::on_CustomTripSELECTED_itemDoubleClicked(QListWidgetItem *item)
+{
+    ui->CustomTripSELECTED->takeItem(ui->CustomTripSELECTED->currentRow());//remove from left list
+    // add to the right list
+    ui->CustomTripSelect->addItem(item->text());
 }
 
 void MainWindow::on_ResetTrip_clicked()
 {
+    ui->CustomTripSelect->clear();
     ui->CustomTripSELECTED->clear();
 
     for(int i = 0; i < mblInfo.size(); i++)
-        ui->CustomTripSelect->insertItem(i,mblInfo[i].TeamName +" ("+ mblInfo[i].StadiumName + ")"); // list in plan trip
+        ui->CustomTripSelect->insertItem(i,mblInfo[i].TeamName +", "+ mblInfo[i].StadiumName); // list in plan trip
 }
 
 void MainWindow::on_PlanTripButton_clicked()
@@ -1262,7 +1263,6 @@ void MainWindow::on_DeleteSouv_clicked()
         if (reply == QMessageBox::Yes)
         {
             qDebug() << "Yes was clicked";
-
             qDebug() << "Removed: "<< mblInfo[selected].StadiumName << souvTar[souvIndex].name << souvTar[souvIndex].price;
             souvenirs.removeSouv(mblInfo[selected].StadiumName, souvTar[souvIndex].name);
 
@@ -1272,11 +1272,15 @@ void MainWindow::on_DeleteSouv_clicked()
 
             if(!deleteQuery.exec())
                 qDebug() << "Delete Souvenir in SQl did not execute!";
+
+            on_SelectTeam_currentIndexChanged(souvIndex);
+
         }
         else
         {
             qDebug() << "Delete Souvenir canceled";
         }
+
     }
     else
     {
@@ -1318,6 +1322,7 @@ void MainWindow::on_LV_Button_clicked()
 {
 
     MBLInfo newElement;
+
     newElement.TeamName = "Las Vegas Gamblers";
     newElement.StadiumName = "Las Vegas Stadium";
     newElement.SeatingCapacity = 41111;
@@ -1330,8 +1335,10 @@ void MainWindow::on_LV_Button_clicked()
     newElement.DistanceMeter = 122;
     newElement.BallparkTypology = "Retro Modern";
     newElement.RoofType = "Open";
+    int ind = teamSearch(newElement.TeamName);
+    qDebug() << ind;
 
-    if(teamSearch(newElement.TeamName) == -1)
+    if(ind == -1)
     {
         infoSize++;
         mblInfo.push_back(newElement);
@@ -1396,8 +1403,7 @@ void MainWindow::on_LV_Button_clicked()
         qDebug()<<graphs.Display();
 
         QSqlQuery query2;
-        query2.prepare("INSERT INTO DistancesBetweenStadiums(OriginatedStadium, DestinationStadium, Distance)"
-                      " VALUES (:start_dist1, :end_dist1, :addDist1)");
+        query2.prepare("INSERT INTO DistanceBetweenStadiums VALUES (:start_dist1, :end_dist1, :addDist1)");
         query2.bindValue(":start_dist1", startStad);
         query2.bindValue(":end_dist1", endStad1);
         query2.bindValue(":addDist1", d1);
@@ -1412,8 +1418,7 @@ void MainWindow::on_LV_Button_clicked()
         }
 
         QSqlQuery query3;
-        query3.prepare("INSERT INTO DistancesBetweenStadiums(OriginatedStadium, DestinationStadium, Distance)"
-                      " VALUES (:start_dist2, :end_dist2, :addDist2)");
+        query3.prepare("INSERT INTO DistanceBetweenStadiums VALUES (:start_dist2, :end_dist2, :addDist2)");
         query3.bindValue(":start_dist2", startStad);
         query3.bindValue(":end_dist2", endStad2);
         query3.bindValue(":addDist2", d2);
@@ -1428,8 +1433,7 @@ void MainWindow::on_LV_Button_clicked()
         }
 
         QSqlQuery query4;
-        query4.prepare("INSERT INTO DistancesBetweenStadiums(OriginatedStadium, DestinationStadium, Distance)"
-                      " VALUES (:start_dist3, :end_dist3, :addDist3)");
+        query4.prepare("INSERT INTO DistanceBetweenStadiums VALUES (:start_dist3, :end_dist3, :addDist3)");
         query4.bindValue(":start_dist3", startStad);
         query4.bindValue(":end_dist3", endStad3);
         query4.bindValue(":addDist3", d3);
@@ -1443,6 +1447,105 @@ void MainWindow::on_LV_Button_clicked()
             qDebug() << "Query UNABLE to execute!";
             QMessageBox::information(this,QObject::tr("System Message"),tr("Failure to input the desired stadium as it already exists!"),QMessageBox::Ok);
         }
+
+
+        //SOuv
+        QSqlQuery insertQuery;
+        QString newSouv;
+        double newPrice;
+        int ind = teamSearch("Las Vegas Gamblers");
+
+        newSouv = "Baseball cap";
+        newPrice = 18.99;
+        souvenirs.insert(mblInfo[ind].StadiumName,newSouv,newPrice);
+
+        on_SelectTeam_currentIndexChanged(ind);
+
+        insertQuery.prepare("INSERT INTO Souvenirs (Stadiumname, Souvenir, Price) VALUES (:stadium, :item, :price)");
+        insertQuery.bindValue(":stadium", mblInfo[ind].StadiumName);
+        insertQuery.bindValue(":item", newSouv);
+        insertQuery.bindValue(":price", newPrice);
+
+        if(!insertQuery.exec())
+        {
+            qDebug() << "Add Souvenir in SQl did not execute!";
+        }
+        else
+            qDebug() << "Add Souvenir success";
+
+        newSouv = "Baseball bat";
+        newPrice = 89.39;
+        souvenirs.insert(mblInfo[ind].StadiumName,newSouv,newPrice);
+
+        on_SelectTeam_currentIndexChanged(ind);
+
+        insertQuery.prepare("INSERT INTO Souvenirs (Stadiumname, Souvenir, Price) VALUES (:stadium, :item, :price)");
+        insertQuery.bindValue(":stadium", mblInfo[ind].StadiumName);
+        insertQuery.bindValue(":item", newSouv);
+        insertQuery.bindValue(":price", newPrice);
+
+        if(!insertQuery.exec())
+        {
+            qDebug() << "Add Souvenir in SQl did not execute!";
+        }
+        else
+            qDebug() << "Add Souvenir success";
+        newSouv = "Team pennant";
+        newPrice = 17.99;
+        souvenirs.insert(mblInfo[ind].StadiumName,newSouv,newPrice);
+
+        on_SelectTeam_currentIndexChanged(ind);
+
+        insertQuery.prepare("INSERT INTO Souvenirs (Stadiumname, Souvenir, Price) VALUES (:stadium, :item, :price)");
+        insertQuery.bindValue(":stadium", mblInfo[ind].StadiumName);
+        insertQuery.bindValue(":item", newSouv);
+        insertQuery.bindValue(":price", newPrice);
+
+        if(!insertQuery.exec())
+        {
+            qDebug() << "Add Souvenir in SQl did not execute!";
+        }
+        else
+            qDebug() << "Add Souvenir success";
+        newSouv = "Autographed baseball";
+        newPrice = 29.99;
+        souvenirs.insert(mblInfo[ind].StadiumName,newSouv,newPrice);
+
+        on_SelectTeam_currentIndexChanged(ind);
+
+        insertQuery.prepare("INSERT INTO Souvenirs (Stadiumname, Souvenir, Price) VALUES (:stadium, :item, :price)");
+        insertQuery.bindValue(":stadium", mblInfo[ind].StadiumName);
+        insertQuery.bindValue(":item", newSouv);
+        insertQuery.bindValue(":price", newPrice);
+
+        if(!insertQuery.exec())
+        {
+            qDebug() << "Add Souvenir in SQl did not execute!";
+        }
+        else
+            qDebug() << "Add Souvenir success";
+        newSouv = "Team jersey";
+        newPrice = 199.99;
+        souvenirs.insert(mblInfo[ind].StadiumName,newSouv,newPrice);
+
+        on_SelectTeam_currentIndexChanged(ind);
+
+        insertQuery.prepare("INSERT INTO Souvenirs (Stadiumname, Souvenir, Price) VALUES (:stadium, :item, :price)");
+        insertQuery.bindValue(":stadium", mblInfo[ind].StadiumName);
+        insertQuery.bindValue(":item", newSouv);
+        insertQuery.bindValue(":price", newPrice);
+
+        if(!insertQuery.exec())
+        {
+            qDebug() << "Add Souvenir in SQl did not execute!";
+        }
+        else
+            qDebug() << "Add Souvenir success";
+
+
+        //adding to widgets
+        ui->SelectTeam->insertItem(ind,mblInfo[ind].TeamName); // list in admin
+        ui->SelectTeam->setCurrentIndex(infoSize-1);
     }
     else
         qDebug() << "LV already exists !";
@@ -1470,6 +1573,7 @@ int MainWindow::teamSearch(QString teamName)
 void MainWindow::on_reset_clicked()
 {
     int ind = teamSearch("Las Vegas Gamblers");
+    qDebug() << ind;
     if(ind != -1)
     {
         qDebug() << "Found LV !";
@@ -1487,6 +1591,113 @@ void MainWindow::on_reset_clicked()
         }
         mblInfo.removeAt(ind);
         infoSize--;
+
+        qDebug()<<graphs.Display();
+
+        QSqlQuery deleteQuery2;
+        deleteQuery2.prepare("DELETE FROM DistanceBetweenStadiums WHERE OriginatedStadium = :index");
+        deleteQuery2.bindValue(":index", "Las Vegas Stadium");
+        if(deleteQuery2.exec())
+        {
+            qDebug() << "Query executed !";
+        }
+        else
+        {
+            qDebug() << "Query UNABLE to execute!";
+            QMessageBox::information(this,QObject::tr("System Message"),tr("Failure to input the desired stadium as it already exists!"),QMessageBox::Ok);
+        }
+
+        QSqlQuery deleteQuery3;
+        deleteQuery3.prepare("DELETE FROM Souvenirs WHERE Stadiumname = :index");
+        deleteQuery3.bindValue(":index", "Las Vegas Stadium");
+        if(deleteQuery3.exec())
+        {
+            qDebug() << "Query executed !";
+        }
+        else
+        {
+            qDebug() << "Query UNABLE to execute!";
+            QMessageBox::information(this,QObject::tr("System Message"),tr("Failure to input the desired stadium as it already exists!"),QMessageBox::Ok);
+        }
+
+        ui->SelectTeam->removeItem(ind); // list in admin
+
+
     }
 
+}
+
+void MainWindow::on_PlanCustomTripButton_clicked()
+{
+    QStringList transfer;
+    QTableWidgetItem *current;
+    int tableSize = ui->CustomTripSELECTED->count();
+    ui->TripTable->clear();
+    qDebug() << "tableSize " << tableSize;
+
+    QStringList headers = {"Stadium", "Price"};
+    ui->TripTable->setColumnCount(2);
+    ui->TripTable->setColumnWidth(0,250);
+    ui->TripTable->setColumnWidth(1,100);
+    ui->TripTable->setRowCount(tableSize);
+
+
+
+    for(int i = 0; i < tableSize; i++)
+    {
+        transfer = ui->CustomTripSELECTED->item(i)->text().split(", ", QString::SkipEmptyParts);
+
+        current = ui->TripTable->item(i,0);
+
+        if(current == nullptr)
+            current = new QTableWidgetItem();
+
+        current->setText(transfer[1]);
+        ui->TripTable->setItem(i,0,current);
+        qDebug() << "Transfering " << transfer[1] << "to" << current->text();
+
+        transfer.clear();
+
+    }
+
+    ui->TripTable->selectRow(0);
+    ui->PlanTripStacked->setCurrentIndex(1);
+
+    currentShown = 0;
+
+    int index = -1;
+
+    for(int o = 0; o < mblInfo.size(); o++)
+    {
+        if(mblInfo[o].StadiumName == ui->TripTable->item(0,0)->text())
+        {
+            index = o;
+            o = mblInfo.size();
+        }
+    }
+
+
+    showTripsStadium(index);
+    ui->TripTable->setHorizontalHeaderLabels(headers);
+    ui->TripTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    UpdateTotalCost();
+
+}
+
+
+void MainWindow::on_CompleteTrip_clicked()
+{
+    ui->PlanTripStacked->setCurrentIndex(0);
+    on_ResetTrip_clicked();
+}
+
+void MainWindow::on_MainPageTabs_currentChanged(int index)
+{
+    switch(index)
+    {
+        case 2: //Team Info Tab
+            ui->listWidget->setCurrentRow(0);
+            on_pushButton_TeamInfo_clicked();
+        break;
+    }
 }

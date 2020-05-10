@@ -211,6 +211,14 @@ private slots:
 
     void on_reset_clicked();
 
+    void on_PlanCustomTripButton_clicked();
+
+    void on_CustomTripSELECTED_itemDoubleClicked(QListWidgetItem *item);
+
+    void on_CompleteTrip_clicked();
+
+    void on_MainPageTabs_currentChanged(int index);
+
 private:
     Ui::MainWindow *ui;
 
