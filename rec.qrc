@@ -4,35 +4,36 @@
         <file>300 x 300px PNG/Welcome_Page_1200_x_600_PNG.png</file>
     </qresource>
     <qresource prefix="/logos">
-        <file>300 x 300px PNG/arizona-diamondbacks-logo-transparent.png</file>
-        <file>300 x 300px PNG/atlanta-braves-logo-transparent.png</file>
-        <file>300 x 300px PNG/baltimore-orioles-logo-transparent.png</file>
-        <file>300 x 300px PNG/boston-red-sox-logo-transparent.png</file>
-        <file>300 x 300px PNG/chicago-cubs-logo-transparent.png</file>
-        <file>300 x 300px PNG/chicago-white-sox-logo-transparent.png</file>
-        <file>300 x 300px PNG/cincinnati-reds-logo-transparent.png</file>
-        <file>300 x 300px PNG/cleveland-indians-c-logo-transparent.png</file>
-        <file>300 x 300px PNG/colorado-rockies-logo-transparent.png</file>
-        <file>300 x 300px PNG/detroit-tigers-logo-transparent.png</file>
-        <file>300 x 300px PNG/houston-astros-logo-transparent.png</file>
-        <file>300 x 300px PNG/kansas-city-royals-logo-transparent.png</file>
-        <file>300 x 300px PNG/los-angeles-angels-logo-transparent.png</file>
-        <file>300 x 300px PNG/los-angeles-dodgers-logo-transparent.png</file>
-        <file>300 x 300px PNG/miami-marlins-logo-transparent.png</file>
-        <file>300 x 300px PNG/milwaukee-brewers-logo-transparent.png</file>
-        <file>300 x 300px PNG/minnesota-twins-logo-transparent.png</file>
-        <file>300 x 300px PNG/new-york-mets-logo-transparent.png</file>
-        <file>300 x 300px PNG/new-york-yankees-logo-transparent.png</file>
-        <file>300 x 300px PNG/oakland-athletics-logo-transparent.png</file>
-        <file>300 x 300px PNG/philadelphia-phillies-logo-transparent.png</file>
-        <file>300 x 300px PNG/pittsburgh-pirates-logo-transparent.png</file>
-        <file>300 x 300px PNG/san-diego-padres-logo-transparent.png</file>
-        <file>300 x 300px PNG/san-francisco-giants-logo-transparent.png</file>
-        <file>300 x 300px PNG/seattle-mariners-logo-transparent.png</file>
-        <file>300 x 300px PNG/st-louis-cardinals-logo-transparent.png</file>
-        <file>300 x 300px PNG/tampa-bay-rays-logo-transparent.png</file>
-        <file>300 x 300px PNG/texas-rangers-logo-transparent.png</file>
-        <file>300 x 300px PNG/toronto-blue-jays-logo-transparent.png</file>
-        <file>300 x 300px PNG/washington-nationals-logo-transparent.png</file>
+        <file alias="Diamondbacks">300 x 300px PNG/arizona-diamondbacks-logo-transparent.png</file>
+        <file alias="Braves">300 x 300px PNG/atlanta-braves-logo-transparent.png</file>
+        <file alias="Orioles">300 x 300px PNG/baltimore-orioles-logo-transparent.png</file>
+        <file alias="RedSox">300 x 300px PNG/boston-red-sox-logo-transparent.png</file>
+        <file alias="Cubs">300 x 300px PNG/chicago-cubs-logo-transparent.png</file>
+        <file alias="WhiteSox">300 x 300px PNG/chicago-white-sox-logo-transparent.png</file>
+        <file alias="Reds">300 x 300px PNG/cincinnati-reds-logo-transparent.png</file>
+        <file alias="Indians">300 x 300px PNG/cleveland-indians-c-logo-transparent.png</file>
+        <file alias="Rockies">300 x 300px PNG/colorado-rockies-logo-transparent.png</file>
+        <file alias="Tigers">300 x 300px PNG/detroit-tigers-logo-transparent.png</file>
+        <file alias="Astros">300 x 300px PNG/houston-astros-logo-transparent.png</file>
+        <file alias="Royals">300 x 300px PNG/kansas-city-royals-logo-transparent.png</file>
+        <file alias="Angels">300 x 300px PNG/los-angeles-angels-logo-transparent.png</file>
+        <file alias="Dodgers">300 x 300px PNG/los-angeles-dodgers-logo-transparent.png</file>
+        <file alias="Marlins">300 x 300px PNG/miami-marlins-logo-transparent.png</file>
+        <file alias="Brewers">300 x 300px PNG/milwaukee-brewers-logo-transparent.png</file>
+        <file alias="Twins">300 x 300px PNG/minnesota-twins-logo-transparent.png</file>
+        <file alias="Mets">300 x 300px PNG/new-york-mets-logo-transparent.png</file>
+        <file alias="Yankees">300 x 300px PNG/new-york-yankees-logo-transparent.png</file>
+        <file alias="Athletics">300 x 300px PNG/oakland-athletics-logo-transparent.png</file>
+        <file alias="Phillies">300 x 300px PNG/philadelphia-phillies-logo-transparent.png</file>
+        <file alias="Pirates">300 x 300px PNG/pittsburgh-pirates-logo-transparent.png</file>
+        <file alias="Padres">300 x 300px PNG/san-diego-padres-logo-transparent.png</file>
+        <file alias="Giants">300 x 300px PNG/san-francisco-giants-logo-transparent.png</file>
+        <file alias="Mariners">300 x 300px PNG/seattle-mariners-logo-transparent.png</file>
+        <file alias="Cardinals">300 x 300px PNG/st-louis-cardinals-logo-transparent.png</file>
+        <file alias="Rays">300 x 300px PNG/tampa-bay-rays-logo-transparent.png</file>
+        <file alias="Rangers">300 x 300px PNG/texas-rangers-logo-transparent.png</file>
+        <file alias="BlueJays">300 x 300px PNG/toronto-blue-jays-logo-transparent.png</file>
+        <file alias="Nationals">300 x 300px PNG/washington-nationals-logo-transparent.png</file>
+        <file alias="Gamblers">300 x 300px PNG/lvGAMBLERS.png</file>
     </qresource>
 </RCC>

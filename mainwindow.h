@@ -16,6 +16,7 @@
 #include <QListWidgetItem>
 #include <QFile>
 #include <QFileDialog>
+#include <QPixmap>
 
 
 QT_BEGIN_NAMESPACE
@@ -219,6 +220,10 @@ private slots:
 
     void on_MainPageTabs_currentChanged(int index);
 
+    void on_TripSelectTeam_currentIndexChanged(int index);
+
+    void on_listWidget_currentRowChanged(int currentRow);
+
 private:
     Ui::MainWindow *ui;
 
@@ -237,6 +242,12 @@ private:
 
     void showSouvenir();//test display func
     void UpdateTotalCost();// Updates TotalCost label
+    void setLogos();
+    void ChangeLogo(QString team, QLabel* logo);
+    void ChangeLogo(int team, QLabel* logo);
+
+
+    QList<QPixmap*> logos;
 
     int currentShown = 0; // marks the index of whats currently shown in StadiumTripInfo from howTripsStadium
 };

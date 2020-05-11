@@ -319,7 +319,7 @@ html.solid {border-style: solid;}
                <string/>
               </property>
               <property name="pixmap">
-               <pixmap resource="rec.qrc">:/logos/300 x 300px PNG/arizona-diamondbacks-logo-transparent.png</pixmap>
+               <pixmap>:/logos/300 x 300px PNG/arizona-diamondbacks-logo-transparent.png</pixmap>
               </property>
               <property name="scaledContents">
                <bool>true</bool>
@@ -352,7 +352,7 @@ html.solid {border-style: solid;}
                     <property name="orientation">
                      <enum>Qt::Horizontal</enum>
                     </property>
-                    <widget class="QWidget" name="">
+                    <widget class="QWidget" name="layoutWidget">
                      <layout class="QHBoxLayout" name="horizontalLayout_18">
                       <item>
                        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -455,12 +455,15 @@ html.solid {border-style: solid;}
                           </property>
                           <property name="maximumSize">
                            <size>
-                            <width>400</width>
-                            <height>500</height>
+                            <width>600</width>
+                            <height>300</height>
                            </size>
                           </property>
                           <property name="text">
-                           <string>[PICTURE OF EACH TEAM LOGO??]</string>
+                           <string/>
+                          </property>
+                          <property name="scaledContents">
+                           <bool>true</bool>
                           </property>
                           <property name="wordWrap">
                            <bool>true</bool>
@@ -584,7 +587,7 @@ html.solid {border-style: solid;}
                       </item>
                      </layout>
                     </widget>
-                    <widget class="QWidget" name="">
+                    <widget class="QWidget" name="layoutWidget">
                      <layout class="QHBoxLayout" name="horizontalLayout_16">
                       <item>
                        <widget class="Line" name="line_4">
@@ -1098,7 +1101,7 @@ html.solid {border-style: solid;}
                     <item>
                      <layout class="QHBoxLayout" name="horizontalLayout_14">
                       <item>
-                       <widget class="QLabel" name="label_12">
+                       <widget class="QLabel" name="TripLogo">
                         <property name="sizePolicy">
                          <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
                           <horstretch>0</horstretch>
@@ -1107,8 +1110,8 @@ html.solid {border-style: solid;}
                         </property>
                         <property name="maximumSize">
                          <size>
-                          <width>200</width>
-                          <height>200</height>
+                          <width>300</width>
+                          <height>300</height>
                          </size>
                         </property>
                         <property name="text">

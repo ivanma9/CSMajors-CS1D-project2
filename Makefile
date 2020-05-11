@@ -497,36 +497,37 @@ qrc_rec.cpp: rec.qrc \
 		I:/QT_IDE/QT/5.14.1/mingw73_64/bin/rcc.exe \
 		displayArrow.png \
 		300\ x\ 300px\ PNG/Welcome_Page_1200_x_600_PNG.png \
-		300\ x\ 300px\ PNG/new-york-mets-logo-transparent.png \
-		300\ x\ 300px\ PNG/arizona-diamondbacks-logo-transparent.png \
-		300\ x\ 300px\ PNG/new-york-yankees-logo-transparent.png \
-		300\ x\ 300px\ PNG/seattle-mariners-logo-transparent.png \
-		300\ x\ 300px\ PNG/miami-marlins-logo-transparent.png \
-		300\ x\ 300px\ PNG/oakland-athletics-logo-transparent.png \
-		300\ x\ 300px\ PNG/cleveland-indians-c-logo-transparent.png \
-		300\ x\ 300px\ PNG/san-francisco-giants-logo-transparent.png \
-		300\ x\ 300px\ PNG/tampa-bay-rays-logo-transparent.png \
-		300\ x\ 300px\ PNG/baltimore-orioles-logo-transparent.png \
-		300\ x\ 300px\ PNG/los-angeles-angels-logo-transparent.png \
-		300\ x\ 300px\ PNG/texas-rangers-logo-transparent.png \
-		300\ x\ 300px\ PNG/toronto-blue-jays-logo-transparent.png \
-		300\ x\ 300px\ PNG/washington-nationals-logo-transparent.png \
-		300\ x\ 300px\ PNG/kansas-city-royals-logo-transparent.png \
-		300\ x\ 300px\ PNG/boston-red-sox-logo-transparent.png \
+		300\ x\ 300px\ PNG/minnesota-twins-logo-transparent.png \
 		300\ x\ 300px\ PNG/milwaukee-brewers-logo-transparent.png \
-		300\ x\ 300px\ PNG/chicago-cubs-logo-transparent.png \
-		300\ x\ 300px\ PNG/chicago-white-sox-logo-transparent.png \
+		300\ x\ 300px\ PNG/los-angeles-angels-logo-transparent.png \
 		300\ x\ 300px\ PNG/pittsburgh-pirates-logo-transparent.png \
+		300\ x\ 300px\ PNG/new-york-mets-logo-transparent.png \
+		300\ x\ 300px\ PNG/tampa-bay-rays-logo-transparent.png \
+		300\ x\ 300px\ PNG/miami-marlins-logo-transparent.png \
+		300\ x\ 300px\ PNG/toronto-blue-jays-logo-transparent.png \
+		300\ x\ 300px\ PNG/chicago-white-sox-logo-transparent.png \
+		300\ x\ 300px\ PNG/arizona-diamondbacks-logo-transparent.png \
+		300\ x\ 300px\ PNG/kansas-city-royals-logo-transparent.png \
+		300\ x\ 300px\ PNG/san-francisco-giants-logo-transparent.png \
 		300\ x\ 300px\ PNG/houston-astros-logo-transparent.png \
+		300\ x\ 300px\ PNG/oakland-athletics-logo-transparent.png \
+		300\ x\ 300px\ PNG/texas-rangers-logo-transparent.png \
+		300\ x\ 300px\ PNG/lvGAMBLERS.png \
 		300\ x\ 300px\ PNG/philadelphia-phillies-logo-transparent.png \
 		300\ x\ 300px\ PNG/cincinnati-reds-logo-transparent.png \
 		300\ x\ 300px\ PNG/colorado-rockies-logo-transparent.png \
 		300\ x\ 300px\ PNG/san-diego-padres-logo-transparent.png \
-		300\ x\ 300px\ PNG/los-angeles-dodgers-logo-transparent.png \
-		300\ x\ 300px\ PNG/st-louis-cardinals-logo-transparent.png \
-		300\ x\ 300px\ PNG/detroit-tigers-logo-transparent.png \
+		300\ x\ 300px\ PNG/new-york-yankees-logo-transparent.png \
 		300\ x\ 300px\ PNG/atlanta-braves-logo-transparent.png \
-		300\ x\ 300px\ PNG/minnesota-twins-logo-transparent.png
+		300\ x\ 300px\ PNG/boston-red-sox-logo-transparent.png \
+		300\ x\ 300px\ PNG/seattle-mariners-logo-transparent.png \
+		300\ x\ 300px\ PNG/st-louis-cardinals-logo-transparent.png \
+		300\ x\ 300px\ PNG/cleveland-indians-c-logo-transparent.png \
+		300\ x\ 300px\ PNG/detroit-tigers-logo-transparent.png \
+		300\ x\ 300px\ PNG/baltimore-orioles-logo-transparent.png \
+		300\ x\ 300px\ PNG/los-angeles-dodgers-logo-transparent.png \
+		300\ x\ 300px\ PNG/chicago-cubs-logo-transparent.png \
+		300\ x\ 300px\ PNG/washington-nationals-logo-transparent.png
 	I:\QT_IDE\QT\5.14.1\mingw73_64\bin\rcc.exe -name rec rec.qrc -o qrc_rec.cpp
 
 compiler_moc_predefs_make_all: moc_predefs.h
@@ -839,6 +840,7 @@ moc_mainwindow.cpp: mainwindow.h \
 		I:/QT_IDE/QT/5.14.1/mingw73_64/include/QtWidgets/qfiledialog.h \
 		I:/QT_IDE/QT/5.14.1/mingw73_64/include/QtCore/qdir.h \
 		I:/QT_IDE/QT/5.14.1/mingw73_64/include/QtCore/qfileinfo.h \
+		I:/QT_IDE/QT/5.14.1/mingw73_64/include/QtGui/QPixmap \
 		moc_predefs.h \
 		I:/QT_IDE/QT/5.14.1/mingw73_64/bin/moc.exe
 	I:\QT_IDE\QT\5.14.1\mingw73_64\bin\moc.exe $(DEFINES) --include G:/Download/CSMajors-CS1D-Project-2/moc_predefs.h -II:/QT_IDE/QT/5.14.1/mingw73_64/mkspecs/win32-g++ -IG:/Download/CSMajors-CS1D-Project-2 -II:/QT_IDE/QT/5.14.1/mingw73_64/include -II:/QT_IDE/QT/5.14.1/mingw73_64/include/QtWidgets -II:/QT_IDE/QT/5.14.1/mingw73_64/include/QtGui -II:/QT_IDE/QT/5.14.1/mingw73_64/include/QtANGLE -II:/QT_IDE/QT/5.14.1/mingw73_64/include/QtSql -II:/QT_IDE/QT/5.14.1/mingw73_64/include/QtCore -IC:/Users/Ivan/Documents/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -IC:/Users/Ivan/Documents/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -IC:/Users/Ivan/Documents/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -IC:/Users/Ivan/Documents/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -IC:/Users/Ivan/Documents/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -IC:/Users/Ivan/Documents/QT/Tools/mingw730_64/x86_64-w64-mingw32/include mainwindow.h -o moc_mainwindow.cpp
@@ -1358,7 +1360,8 @@ dbManager.o: dbManager.cpp dbManager.h \
 		I:/QT_IDE/QT/5.14.1/mingw73_64/include/QtWidgets/QFileDialog \
 		I:/QT_IDE/QT/5.14.1/mingw73_64/include/QtWidgets/qfiledialog.h \
 		I:/QT_IDE/QT/5.14.1/mingw73_64/include/QtCore/qdir.h \
-		I:/QT_IDE/QT/5.14.1/mingw73_64/include/QtCore/qfileinfo.h
+		I:/QT_IDE/QT/5.14.1/mingw73_64/include/QtCore/qfileinfo.h \
+		I:/QT_IDE/QT/5.14.1/mingw73_64/include/QtGui/QPixmap
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dbManager.o dbManager.cpp
 
 graphds.o: graphds.cpp graphds.h \
@@ -1606,6 +1609,7 @@ main.o: main.cpp mainwindow.h \
 		I:/QT_IDE/QT/5.14.1/mingw73_64/include/QtWidgets/qfiledialog.h \
 		I:/QT_IDE/QT/5.14.1/mingw73_64/include/QtCore/qdir.h \
 		I:/QT_IDE/QT/5.14.1/mingw73_64/include/QtCore/qfileinfo.h \
+		I:/QT_IDE/QT/5.14.1/mingw73_64/include/QtGui/QPixmap \
 		I:/QT_IDE/QT/5.14.1/mingw73_64/include/QtWidgets/QApplication \
 		I:/QT_IDE/QT/5.14.1/mingw73_64/include/QtWidgets/qapplication.h \
 		I:/QT_IDE/QT/5.14.1/mingw73_64/include/QtCore/qcoreapplication.h \
@@ -1788,6 +1792,7 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		I:/QT_IDE/QT/5.14.1/mingw73_64/include/QtWidgets/qfiledialog.h \
 		I:/QT_IDE/QT/5.14.1/mingw73_64/include/QtCore/qdir.h \
 		I:/QT_IDE/QT/5.14.1/mingw73_64/include/QtCore/qfileinfo.h \
+		I:/QT_IDE/QT/5.14.1/mingw73_64/include/QtGui/QPixmap \
 		ui_mainwindow.h \
 		I:/QT_IDE/QT/5.14.1/mingw73_64/include/QtWidgets/QApplication \
 		I:/QT_IDE/QT/5.14.1/mingw73_64/include/QtWidgets/qapplication.h \

@@ -69,7 +69,7 @@ public:
     QWidget *PlanTrip;
     QVBoxLayout *verticalLayout_9;
     QSplitter *splitter;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout_18;
     QVBoxLayout *verticalLayout_5;
     QLabel *label_4;
@@ -85,7 +85,7 @@ public:
     QPushButton *PlanTripDijkstra;
     QSpacerItem *horizontalSpacer_8;
     QFrame *line_5;
-    QWidget *widget1;
+    QWidget *layoutWidget1;
     QHBoxLayout *horizontalLayout_16;
     QFrame *line_4;
     QVBoxLayout *verticalLayout_4;
@@ -122,7 +122,7 @@ public:
     QPushButton *NextStadium;
     QSpacerItem *horizontalSpacer_11;
     QHBoxLayout *horizontalLayout_14;
-    QLabel *label_12;
+    QLabel *TripLogo;
     QVBoxLayout *verticalLayout_7;
     QLabel *BuyHeader;
     QTableWidget *Souvenir;
@@ -308,14 +308,14 @@ public:
         splitter = new QSplitter(PlanTrip);
         splitter->setObjectName(QString::fromUtf8("splitter"));
         splitter->setOrientation(Qt::Horizontal);
-        widget = new QWidget(splitter);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        horizontalLayout_18 = new QHBoxLayout(widget);
+        layoutWidget = new QWidget(splitter);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        horizontalLayout_18 = new QHBoxLayout(layoutWidget);
         horizontalLayout_18->setObjectName(QString::fromUtf8("horizontalLayout_18"));
         horizontalLayout_18->setContentsMargins(0, 0, 0, 0);
         verticalLayout_5 = new QVBoxLayout();
         verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
-        label_4 = new QLabel(widget);
+        label_4 = new QLabel(layoutWidget);
         label_4->setObjectName(QString::fromUtf8("label_4"));
         QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Maximum);
         sizePolicy2.setHorizontalStretch(0);
@@ -333,7 +333,7 @@ public:
 
         verticalLayout_5->addWidget(label_4);
 
-        label_8 = new QLabel(widget);
+        label_8 = new QLabel(layoutWidget);
         label_8->setObjectName(QString::fromUtf8("label_8"));
         sizePolicy2.setHeightForWidth(label_8->sizePolicy().hasHeightForWidth());
         label_8->setSizePolicy(sizePolicy2);
@@ -348,7 +348,7 @@ public:
 
         verticalLayout_5->addWidget(label_8);
 
-        TripSelectTeam = new QComboBox(widget);
+        TripSelectTeam = new QComboBox(layoutWidget);
         TripSelectTeam->setObjectName(QString::fromUtf8("TripSelectTeam"));
         QSizePolicy sizePolicy3(QSizePolicy::Expanding, QSizePolicy::Fixed);
         sizePolicy3.setHorizontalStretch(0);
@@ -363,23 +363,24 @@ public:
 
         verticalLayout_5->addWidget(TripSelectTeam);
 
-        line_7 = new QFrame(widget);
+        line_7 = new QFrame(layoutWidget);
         line_7->setObjectName(QString::fromUtf8("line_7"));
         line_7->setFrameShape(QFrame::HLine);
         line_7->setFrameShadow(QFrame::Sunken);
 
         verticalLayout_5->addWidget(line_7);
 
-        TeamLogo = new QLabel(widget);
+        TeamLogo = new QLabel(layoutWidget);
         TeamLogo->setObjectName(QString::fromUtf8("TeamLogo"));
         sizePolicy.setHeightForWidth(TeamLogo->sizePolicy().hasHeightForWidth());
         TeamLogo->setSizePolicy(sizePolicy);
-        TeamLogo->setMaximumSize(QSize(400, 500));
+        TeamLogo->setMaximumSize(QSize(600, 300));
+        TeamLogo->setScaledContents(true);
         TeamLogo->setWordWrap(true);
 
         verticalLayout_5->addWidget(TeamLogo);
 
-        line_6 = new QFrame(widget);
+        line_6 = new QFrame(layoutWidget);
         line_6->setObjectName(QString::fromUtf8("line_6"));
         line_6->setFrameShape(QFrame::HLine);
         line_6->setFrameShadow(QFrame::Sunken);
@@ -393,7 +394,7 @@ public:
 
         horizontalLayout_11->addItem(horizontalSpacer_7);
 
-        PlanTripButton = new QPushButton(widget);
+        PlanTripButton = new QPushButton(layoutWidget);
         PlanTripButton->setObjectName(QString::fromUtf8("PlanTripButton"));
         QSizePolicy sizePolicy4(QSizePolicy::Maximum, QSizePolicy::Maximum);
         sizePolicy4.setHorizontalStretch(0);
@@ -412,7 +413,7 @@ public:
 
         horizontalLayout_11->addItem(horizontalSpacer_6);
 
-        PlanTripDijkstra = new QPushButton(widget);
+        PlanTripDijkstra = new QPushButton(layoutWidget);
         PlanTripDijkstra->setObjectName(QString::fromUtf8("PlanTripDijkstra"));
         QSizePolicy sizePolicy5(QSizePolicy::Minimum, QSizePolicy::Minimum);
         sizePolicy5.setHorizontalStretch(0);
@@ -434,20 +435,20 @@ public:
 
         horizontalLayout_18->addLayout(verticalLayout_5);
 
-        line_5 = new QFrame(widget);
+        line_5 = new QFrame(layoutWidget);
         line_5->setObjectName(QString::fromUtf8("line_5"));
         line_5->setFrameShape(QFrame::VLine);
         line_5->setFrameShadow(QFrame::Sunken);
 
         horizontalLayout_18->addWidget(line_5);
 
-        splitter->addWidget(widget);
-        widget1 = new QWidget(splitter);
-        widget1->setObjectName(QString::fromUtf8("widget1"));
-        horizontalLayout_16 = new QHBoxLayout(widget1);
+        splitter->addWidget(layoutWidget);
+        layoutWidget1 = new QWidget(splitter);
+        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
+        horizontalLayout_16 = new QHBoxLayout(layoutWidget1);
         horizontalLayout_16->setObjectName(QString::fromUtf8("horizontalLayout_16"));
         horizontalLayout_16->setContentsMargins(0, 0, 0, 0);
-        line_4 = new QFrame(widget1);
+        line_4 = new QFrame(layoutWidget1);
         line_4->setObjectName(QString::fromUtf8("line_4"));
         line_4->setFrameShape(QFrame::VLine);
         line_4->setFrameShadow(QFrame::Sunken);
@@ -462,7 +463,7 @@ public:
 
         horizontalLayout_10->addItem(horizontalSpacer_2);
 
-        label_5 = new QLabel(widget1);
+        label_5 = new QLabel(layoutWidget1);
         label_5->setObjectName(QString::fromUtf8("label_5"));
         QSizePolicy sizePolicy6(QSizePolicy::Maximum, QSizePolicy::Preferred);
         sizePolicy6.setHorizontalStretch(0);
@@ -484,13 +485,13 @@ public:
 
         gridLayout = new QGridLayout();
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        CustomTripSelect = new QListWidget(widget1);
+        CustomTripSelect = new QListWidget(layoutWidget1);
         CustomTripSelect->setObjectName(QString::fromUtf8("CustomTripSelect"));
         CustomTripSelect->setFont(font6);
 
         gridLayout->addWidget(CustomTripSelect, 1, 0, 1, 1);
 
-        label_6 = new QLabel(widget1);
+        label_6 = new QLabel(layoutWidget1);
         label_6->setObjectName(QString::fromUtf8("label_6"));
         sizePolicy1.setHeightForWidth(label_6->sizePolicy().hasHeightForWidth());
         label_6->setSizePolicy(sizePolicy1);
@@ -505,7 +506,7 @@ public:
 
         gridLayout->addWidget(label_6, 0, 1, 1, 1);
 
-        label_7 = new QLabel(widget1);
+        label_7 = new QLabel(layoutWidget1);
         label_7->setObjectName(QString::fromUtf8("label_7"));
         sizePolicy1.setHeightForWidth(label_7->sizePolicy().hasHeightForWidth());
         label_7->setSizePolicy(sizePolicy1);
@@ -515,7 +516,7 @@ public:
 
         gridLayout->addWidget(label_7, 0, 0, 1, 1);
 
-        CustomTripSELECTED = new QListWidget(widget1);
+        CustomTripSELECTED = new QListWidget(layoutWidget1);
         CustomTripSELECTED->setObjectName(QString::fromUtf8("CustomTripSELECTED"));
         CustomTripSELECTED->setFont(font6);
 
@@ -530,7 +531,7 @@ public:
 
         horizontalLayout_9->addItem(horizontalSpacer_4);
 
-        ResetTrip = new QPushButton(widget1);
+        ResetTrip = new QPushButton(layoutWidget1);
         ResetTrip->setObjectName(QString::fromUtf8("ResetTrip"));
         ResetTrip->setMaximumSize(QSize(250, 16777215));
         ResetTrip->setFont(font6);
@@ -544,7 +545,7 @@ public:
 
         verticalLayout_4->addLayout(horizontalLayout_9);
 
-        line_3 = new QFrame(widget1);
+        line_3 = new QFrame(layoutWidget1);
         line_3->setObjectName(QString::fromUtf8("line_3"));
         line_3->setFrameShape(QFrame::HLine);
         line_3->setFrameShadow(QFrame::Sunken);
@@ -554,7 +555,7 @@ public:
         horizontalLayout_17 = new QHBoxLayout();
         horizontalLayout_17->setObjectName(QString::fromUtf8("horizontalLayout_17"));
         horizontalLayout_17->setSizeConstraint(QLayout::SetMaximumSize);
-        PlanCustomTripButton = new QPushButton(widget1);
+        PlanCustomTripButton = new QPushButton(layoutWidget1);
         PlanCustomTripButton->setObjectName(QString::fromUtf8("PlanCustomTripButton"));
         sizePolicy4.setHeightForWidth(PlanCustomTripButton->sizePolicy().hasHeightForWidth());
         PlanCustomTripButton->setSizePolicy(sizePolicy4);
@@ -568,7 +569,7 @@ public:
 
         horizontalLayout_16->addLayout(verticalLayout_4);
 
-        splitter->addWidget(widget1);
+        splitter->addWidget(layoutWidget1);
 
         verticalLayout_9->addWidget(splitter);
 
@@ -691,13 +692,13 @@ public:
 
         horizontalLayout_14 = new QHBoxLayout();
         horizontalLayout_14->setObjectName(QString::fromUtf8("horizontalLayout_14"));
-        label_12 = new QLabel(Souvenirs);
-        label_12->setObjectName(QString::fromUtf8("label_12"));
-        sizePolicy2.setHeightForWidth(label_12->sizePolicy().hasHeightForWidth());
-        label_12->setSizePolicy(sizePolicy2);
-        label_12->setMaximumSize(QSize(200, 200));
+        TripLogo = new QLabel(Souvenirs);
+        TripLogo->setObjectName(QString::fromUtf8("TripLogo"));
+        sizePolicy2.setHeightForWidth(TripLogo->sizePolicy().hasHeightForWidth());
+        TripLogo->setSizePolicy(sizePolicy2);
+        TripLogo->setMaximumSize(QSize(300, 300));
 
-        horizontalLayout_14->addWidget(label_12);
+        horizontalLayout_14->addWidget(TripLogo);
 
         verticalLayout_7 = new QVBoxLayout();
         verticalLayout_7->setObjectName(QString::fromUtf8("verticalLayout_7"));
@@ -1030,7 +1031,7 @@ public:
         MainPageTabs->setTabText(MainPageTabs->indexOf(TeamInfoTab), QCoreApplication::translate("MainWindow", "Team Information", nullptr));
         label_4->setText(QCoreApplication::translate("MainWindow", "Trip Planner", nullptr));
         label_8->setText(QCoreApplication::translate("MainWindow", "Select a Team to start at", nullptr));
-        TeamLogo->setText(QCoreApplication::translate("MainWindow", "[PICTURE OF EACH TEAM LOGO??]", nullptr));
+        TeamLogo->setText(QString());
         PlanTripButton->setText(QCoreApplication::translate("MainWindow", "Plan Trip", nullptr));
         PlanTripDijkstra->setText(QCoreApplication::translate("MainWindow", "Plan Trip using Dijkstra", nullptr));
         label_5->setText(QCoreApplication::translate("MainWindow", "Custom Trip Planner", nullptr));
@@ -1050,7 +1051,7 @@ public:
         CompleteTrip->setText(QCoreApplication::translate("MainWindow", "Complete Trip", nullptr));
         PrevStadium->setText(QCoreApplication::translate("MainWindow", "Previous Stadium", nullptr));
         NextStadium->setText(QCoreApplication::translate("MainWindow", "Next Stadium", nullptr));
-        label_12->setText(QCoreApplication::translate("MainWindow", "[PICTURE?]", nullptr));
+        TripLogo->setText(QCoreApplication::translate("MainWindow", "[PICTURE?]", nullptr));
         BuyHeader->setText(QCoreApplication::translate("MainWindow", "Stadium's Souvenirs", nullptr));
         ResetSouvenir->setText(QCoreApplication::translate("MainWindow", "Reset", nullptr));
         BuySouvenir->setText(QCoreApplication::translate("MainWindow", "Buy", nullptr));
