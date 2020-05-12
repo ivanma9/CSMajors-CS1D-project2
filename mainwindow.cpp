@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     QSqlDatabase myDB;
+    //Q_INIT_RESOURCE(rec); // allows using of the rec resource file
 
     ui->UsersTabs->setCurrentIndex(0);
     ui->UsersTabs->removeTab(1);
@@ -21,12 +22,14 @@ MainWindow::MainWindow(QWidget *parent)
     myDB.setDatabaseName("BaseballDatabase.db");
     myDB.open();
 
-    modifyTable = false; // turn off when directly modifying the admintable
 
+    modifyTable = false; // turn off when directly modifying to stop change signals
     //Reading the data from SQL
     CreateGraph();
     ReadInfo();
     ReadSouvenirs();
+
+    setLogos();
 
     ui->PlanTripStacked->setCurrentIndex(0);
     ui->MainPageTabs->setCurrentIndex(0);
@@ -39,7 +42,6 @@ MainWindow::MainWindow(QWidget *parent)
     setupCustomSelect();
     //on_CustomDijkstra_clicked();//preloads the algorithm test table
     modifyTable = true; // turn on when the admin table can be modified by user
-
 
 //showSouvenir();
 }
@@ -190,48 +192,67 @@ void MainWindow::setupDisplayListTab()
     13.	Display only the stadium(s) and corresponding team name(s) that has the smallest distance to center field.
     */
 
-    ui->comboBox->addItem("team name for All teams");               //4. DISPLAY - team name, stadium; SORT - team name; SELECT - ALL
-    ui->comboBox->addItem("stadium name for All teams");            //5. DISPLAY - team name, stadium; SORT - stadium name; SELECT - ALL
-    ui->comboBox->addItem("team name for American League");         //6. DISPLAY - team name, stadium; SORT - team name; SELECT - American
+    ui->comboBox->addItem("Team name for All teams");               //4. DISPLAY - team name, stadium; SORT - team name; SELECT - ALL
+    ui->comboBox->addItem("Stadium name for All teams");            //5. DISPLAY - team name, stadium; SORT - stadium name; SELECT - ALL
+    ui->comboBox->addItem("Team name for American League");         //6. DISPLAY - team name, stadium; SORT - team name; SELECT - American
     ui->comboBox->addItem("stadium name for National League");      //7. DISPLAY - team name, stadium; SORT - stadium; SELECT - National
 
-    ui->comboBox->addItem("park typology for All teams");           //8. DISPLAY - stadium, team name, typology; SORT - typology; SELECT - ALL
-    ui->comboBox->addItem("team name for open roof type");          //9. DISPLAY -  team name, count(open roof type); SORT - stadium name; SELECT - open roof type == Yes
-    ui->comboBox->addItem("chronological order (oldest to newest)");//10. DISPLAY - stadium, team name, open date; SORT - date opened descending; SELECT - ALL
-    ui->comboBox->addItem("seating capactiy (smallest to largest)");//11. DISPLAY - stadium, team name, total capacity = sum(seating capacity); SORT - seating capacity ascending; SELECT - ALL
+    ui->comboBox->addItem("Park typology for All teams");           //8. DISPLAY - stadium, team name, typology; SORT - typology; SELECT - ALL
+    ui->comboBox->addItem("Team name for open roof type");          //9. DISPLAY -  team name, count(open roof type); SORT - stadium name; SELECT - open roof type == Yes
+    ui->comboBox->addItem("Chronological order (oldest to newest)");//10. DISPLAY - stadium, team name, open date; SORT - date opened descending; SELECT - ALL
+    ui->comboBox->addItem("Seating capactiy (smallest to largest)");//11. DISPLAY - stadium, team name, total capacity = sum(seating capacity); SORT - seating capacity ascending; SELECT - ALL
 
-    ui->comboBox->addItem("greatest distance to center field");     //12. DISPLAY - team name, stadium; SORT - distance to center field; SELECT - greatest distance to center field
-    ui->comboBox->addItem("smallest distance to center field");     //13. DISPLAY - team name, stadium; SORT - distance to center field; SELECT - smallest distance to center field
+    ui->comboBox->addItem("Greatest distance to center field");     //12. DISPLAY - team name, stadium; SORT - distance to center field; SELECT - greatest distance to center field
+    ui->comboBox->addItem("Smallest distance to center field");     //13. DISPLAY - team name, stadium; SORT - distance to center field; SELECT - smallest distance to center field
 
 }
 
 void MainWindow::setupTeamInfoTab()
 {
     //sets up fancy push button
-
+    modifyTable=false;
     ui->pushButton_TeamInfo->setIcon(QIcon(":/img/displayArrow.png"));//setStyleSheet("background-image:url(:/img/displayArrow.png)");
     ui->pushButton_TeamInfo->setIconSize(QSize(ui->pushButton_TeamInfo->width(), ui->pushButton_TeamInfo->height()));
     ui->pushButton_TeamInfo->setStyleSheet("QPushButton:hover {border: blue");
 
-
+    ui->listWidget->clear();
+    ui->SelectTeam->clear();
+    ui->CustomTripSelect->clear();
     for(int i = 0; i < mblInfo.size(); i++)
     {
-        ui->listWidget->insertItem(i,mblInfo[i].TeamName); // list in info
-        ui->SelectTeam->insertItem(i,mblInfo[i].TeamName); // list in admin
-        ui->CustomTripSelect->insertItem(i,mblInfo[i].TeamName +", "+ mblInfo[i].StadiumName); // list in plan trip
+        ui->listWidget->addItem(mblInfo[i].TeamName+ " ("+ mblInfo[i].StadiumName+ ")"); // list in info
+        ui->SelectTeam->addItem(mblInfo[i].TeamName+ " ("+ mblInfo[i].StadiumName+ ")"); // list in admin
+        ui->CustomTripSelect->addItem(mblInfo[i].TeamName + ", "+ mblInfo[i].StadiumName); // list in plan trip
+
+
+//        ui->listWidget->insertItem(1, mblInfo[i].TeamName); // list in info
+//        ui->SelectTeam->insertItem(i,mblInfo[i].TeamName); // list in admin
+//        ui->CustomTripSelect->insertItem(i,mblInfo[i].TeamName +", "+ mblInfo[i].StadiumName); // list in plan trip
 
     }
 
-
+    modifyTable=true;
 }
 
 void MainWindow::setupCustomSelect()
 {
+    modifyTable=false;
+
+    ui->CustomSelect->clear();
+    ui->TripSelectTeam->clear();
     for(int i = 0; i < mblInfo.size(); i++)
     {
-        ui->CustomSelect->insertItem(i,mblInfo[i].TeamName +" ("+ mblInfo[i].StadiumName + ")");
-        ui->TripSelectTeam->insertItem(i,mblInfo[i].TeamName +" ("+ mblInfo[i].StadiumName + ")");
+        //algorithm test combobox
+        ui->CustomSelect->addItem(mblInfo[i].TeamName +" ("+ mblInfo[i].StadiumName + ")");
+        //plan trip combobox
+        ui->TripSelectTeam->addItem(mblInfo[i].TeamName +", "+ mblInfo[i].StadiumName);
+
+        //both at dijkstra comboboxes
+        ui->StartSelection->addItem(mblInfo[i].TeamName +", "+ mblInfo[i].StadiumName);
+        ui->EndSelection->addItem(mblInfo[i].TeamName +", "+ mblInfo[i].StadiumName);
+
     }
+    modifyTable=true;
 }
 
 void MainWindow::on_login_clicked()
@@ -376,7 +397,7 @@ void MainWindow::on_pushButton_2_clicked()
         case 7:
         {
 //qDebug() << "11. DISPLAY - stadium, team name, total capacity = sum(seating capacity); SORT - seating capacity ascending; SELECT - ALL";
-            sQry = "SELECT StadiumName, TeamName, seating capacity FROM MLBInformation ORDER BY SeatingCapacity";
+            sQry = "SELECT StadiumName, TeamName, SeatingCapacity FROM MLBInformation ORDER BY SeatingCapacity";
             sQry2 = "Select sum(SeatingCapacity) as 'Total Capacity' FROM MLBInformation";
             ui->displayInfo->setColumnWidth(0, 200);
             ui->displayInfo->setColumnWidth(1, 200);
@@ -952,6 +973,7 @@ void MainWindow::on_PlanTripButton_clicked()
     int selected = ui->TripSelectTeam->currentIndex();
     ui->CustomSelect->setCurrentIndex(selected);
 
+
     QStringList headers = {"Stadium", "Price"};
     ui->TripTable->setColumnCount(2);
 
@@ -959,60 +981,25 @@ void MainWindow::on_PlanTripButton_clicked()
     QList<TableOutput> tripPlan = on_CustomDFS_clicked();
     ui->PlanTripStacked->setCurrentIndex(1);
 
+    //transfer the DFS results to the trip table
     printTripTable(tripPlan);
 
     ui->TripTable->setHorizontalHeaderLabels(headers);
 
-    int index = -1;
-
-    for(int o = 0; o < mblInfo.size(); o++)
-    {
-        if(mblInfo[o].StadiumName == tripPlan[0].stadiums)
-        {
-            index = o;
-            o = mblInfo.size();
-        }
-    }
     ui->TripTable->selectRow(0);
     currentShown = 0;
-    showTripsStadium(index);
-}
 
-void MainWindow::on_PlanTripDijkstra_clicked()
-{
-    int selected = ui->TripSelectTeam->currentIndex();
-    ui->CustomSelect->setCurrentIndex(selected);
+    QStringList initial = ui->TripTable->itemAt(0,0)->text().split(", ", QString::SkipEmptyParts);;
 
-    QStringList headers = {"Stadium", "Total Bought"};
-    ui->TripTable->setColumnCount(2);
-
-    //run algorithm
-    QList<TableOutput> tripPlan = on_CustomDijkstra_clicked();
-    ui->PlanTripStacked->setCurrentIndex(1);
-
-    printTripTable(tripPlan);
-
-    ui->TripTable->setHorizontalHeaderLabels(headers);
-
-    int index = -1;
-
-    for(int o = 0; o < mblInfo.size(); o++)
-    {
-        if(mblInfo[o].StadiumName == tripPlan[0].stadiums)
-        {
-            index = o;
-            o = mblInfo.size();
-        }
-    }
-    ui->TripTable->selectRow(0);
-    currentShown = 0;
-    showTripsStadium(index);
+    showTripsStadium(initial[1]);
 }
 
 void MainWindow::printTripTable(QList<TableOutput> trip)
 {
     int tableSize = trip.size();
+    int index;
     QTableWidgetItem *nodes; //adds in the data
+    QString teamName;
     //ui->CustomTable->clearContents();
     //setting the table
     ui->TripTable->setRowCount(tableSize-1);
@@ -1023,8 +1010,17 @@ void MainWindow::printTripTable(QList<TableOutput> trip)
 
     for(int i = 0; i < tableSize-1; i++)
     {
-        nodes = new QTableWidgetItem();
-        nodes -> setText(trip[i].stadiums);
+        nodes = ui->TripTable->item(i,0);
+        if(nodes == nullptr)
+            nodes = new QTableWidgetItem();
+
+        //setText
+        index = stadiumSearch(trip[i].stadiums);
+        if(index != -1)
+            teamName = mblInfo[index].TeamName;
+
+        nodes -> setText(teamName + ", " + trip[i].stadiums);
+
         ui->TripTable->setItem(i, 0, nodes);
 
     }
@@ -1036,20 +1032,27 @@ void MainWindow::printTripTable(QList<TableOutput> trip)
 
 void MainWindow::on_TripTable_itemDoubleClicked(QTableWidgetItem *item)
 {
+    //transfer = ui->CustomTripSELECTED->item(i)->text().split(", ", QString::SkipEmptyParts);
+    QStringList compare = item->text().split(", ", QString::SkipEmptyParts);
+    qDebug() << compare[1];
     if(item->column() == 0) //only dbl click the 1st col
     {
         int index = -1;
 
         for(int o = 0; o < mblInfo.size(); o++)
         {
-            if(mblInfo[o].StadiumName == item->text())
+
+            if(mblInfo[o].StadiumName == compare[1])
             {
                 index = o;
                 o = mblInfo.size();
             }
         }
+        if(index != -1)
+        {
         currentShown = ui->TripTable->currentRow();
         showTripsStadium(index);
+        }
     }
 
 }
@@ -1081,9 +1084,26 @@ void MainWindow::on_NextStadium_clicked()
 
 }
 
+void MainWindow::showTripsStadium(QString stadium)
+{
+    int index = -1;
+
+    for(int o = 0; o < mblInfo.size(); o++)
+    {
+        if(mblInfo[o].StadiumName == stadium)
+        {
+            index = o;
+            o = mblInfo.size();
+        }
+    }
+
+    showTripsStadium(index);
+}
+
 void MainWindow::showTripsStadium(int stadium)
 {
     ui->StadiumTripInfo->clear();
+    ChangeLogo(stadium, ui->TripLogo);
 
     int currRow = stadium;
 
@@ -1367,21 +1387,20 @@ void MainWindow::on_LV_Button_clicked()
             QMessageBox::information(this,QObject::tr("System Message"),tr("Failure to input the desired team as it already exists!"),QMessageBox::Ok);
         }
 
-        //adding distance
-        QStringList airportNames;
-        qDebug() << "Adding airport..";
+//        //adding distance
+//        QStringList airportNames;
+//        qDebug() << "Adding airport..";
 
-        airportNames << "Las Vegas Stadium";
+//        airportNames << "Las Vegas Stadium";
 
-        airportNames.removeDuplicates();
-        qDebug() << "number of vertex: "<< airportNames.size();
+//        airportNames.removeDuplicates();
+//        qDebug() << "number of vertex: "<< airportNames.size();
 
-        //Create the vertices
-        for(int i = 0; i < airportNames.size(); i++)
-        {
-            qDebug() << airportNames[i];
-            graphs.AddAirport(airportNames[i]);
-        }
+//        //Create the vertices
+//        for(int i = 0; i < airportNames.size(); i++)
+//        {
+//            qDebug() << airportNames[i];
+//        }
 
         QString startStad = "Las Vegas Stadium";
         QString endStad1 = "Oakland Alameda County Coliseum";
@@ -1391,15 +1410,16 @@ void MainWindow::on_LV_Button_clicked()
         int d2 = 300;
         int d3 = 250;
 
-        graphs.ConnectAirports(startStad,
-                               endStad1,
-                               d1);
-        graphs.ConnectAirports(startStad,
-                               endStad2,
-                               d2);
-        graphs.ConnectAirports(startStad,
-                               endStad3,
-                               d3);
+        graphs.AddAirport(startStad);
+
+
+        graphs.ConnectAirports(startStad,endStad1,d1);
+        graphs.ConnectAirports(startStad,endStad2,d2);
+        graphs.ConnectAirports(startStad,endStad3,d3);
+
+        graphs.ConnectAirports(endStad1,startStad,d1);
+        graphs.ConnectAirports(endStad2,startStad,d2);
+        graphs.ConnectAirports(endStad3,startStad,d3);
         qDebug()<<graphs.Display();
 
         QSqlQuery query2;
@@ -1459,8 +1479,6 @@ void MainWindow::on_LV_Button_clicked()
         newPrice = 18.99;
         souvenirs.insert(mblInfo[ind].StadiumName,newSouv,newPrice);
 
-        on_SelectTeam_currentIndexChanged(ind);
-
         insertQuery.prepare("INSERT INTO Souvenirs (Stadiumname, Souvenir, Price) VALUES (:stadium, :item, :price)");
         insertQuery.bindValue(":stadium", mblInfo[ind].StadiumName);
         insertQuery.bindValue(":item", newSouv);
@@ -1477,8 +1495,6 @@ void MainWindow::on_LV_Button_clicked()
         newPrice = 89.39;
         souvenirs.insert(mblInfo[ind].StadiumName,newSouv,newPrice);
 
-        on_SelectTeam_currentIndexChanged(ind);
-
         insertQuery.prepare("INSERT INTO Souvenirs (Stadiumname, Souvenir, Price) VALUES (:stadium, :item, :price)");
         insertQuery.bindValue(":stadium", mblInfo[ind].StadiumName);
         insertQuery.bindValue(":item", newSouv);
@@ -1493,8 +1509,6 @@ void MainWindow::on_LV_Button_clicked()
         newSouv = "Team pennant";
         newPrice = 17.99;
         souvenirs.insert(mblInfo[ind].StadiumName,newSouv,newPrice);
-
-        on_SelectTeam_currentIndexChanged(ind);
 
         insertQuery.prepare("INSERT INTO Souvenirs (Stadiumname, Souvenir, Price) VALUES (:stadium, :item, :price)");
         insertQuery.bindValue(":stadium", mblInfo[ind].StadiumName);
@@ -1511,8 +1525,6 @@ void MainWindow::on_LV_Button_clicked()
         newPrice = 29.99;
         souvenirs.insert(mblInfo[ind].StadiumName,newSouv,newPrice);
 
-        on_SelectTeam_currentIndexChanged(ind);
-
         insertQuery.prepare("INSERT INTO Souvenirs (Stadiumname, Souvenir, Price) VALUES (:stadium, :item, :price)");
         insertQuery.bindValue(":stadium", mblInfo[ind].StadiumName);
         insertQuery.bindValue(":item", newSouv);
@@ -1528,7 +1540,6 @@ void MainWindow::on_LV_Button_clicked()
         newPrice = 199.99;
         souvenirs.insert(mblInfo[ind].StadiumName,newSouv,newPrice);
 
-        on_SelectTeam_currentIndexChanged(ind);
 
         insertQuery.prepare("INSERT INTO Souvenirs (Stadiumname, Souvenir, Price) VALUES (:stadium, :item, :price)");
         insertQuery.bindValue(":stadium", mblInfo[ind].StadiumName);
@@ -1542,10 +1553,17 @@ void MainWindow::on_LV_Button_clicked()
         else
             qDebug() << "Add Souvenir success";
 
+        on_SelectTeam_currentIndexChanged(ind);
 
         //adding to widgets
         ui->SelectTeam->insertItem(ind,mblInfo[ind].TeamName); // list in admin
         ui->SelectTeam->setCurrentIndex(infoSize-1);
+
+        ui->CustomSelect->insertItem(ind,mblInfo[ind].TeamName);
+        ui->TripSelectTeam->insertItem(ind,mblInfo[ind].TeamName);
+
+        ui->listWidget->insertItem(ind,mblInfo[ind].TeamName);
+        ui->CustomTripSelect->insertItem(ind,mblInfo[ind].TeamName);
     }
     else
         qDebug() << "LV already exists !";
@@ -1561,6 +1579,21 @@ int MainWindow::teamSearch(QString teamName)
     for(int i = 0; i < mblInfo.size(); i++)
     {
         if(teamName == mblInfo[i].TeamName)
+        {
+            index = i;
+            i = index; // ends teh loop
+        }
+    }
+
+    return index;
+}
+
+int MainWindow::stadiumSearch(QString staName)
+{
+    int index = -1;
+    for(int i = 0; i < mblInfo.size(); i++)
+    {
+        if(staName == mblInfo[i].StadiumName)
         {
             index = i;
             i = index; // ends teh loop
@@ -1621,6 +1654,11 @@ void MainWindow::on_reset_clicked()
         }
 
         ui->SelectTeam->removeItem(ind); // list in admin
+        ui->CustomSelect->removeItem(ind);
+        ui->TripSelectTeam->removeItem(ind);
+
+        ui->listWidget->takeItem(ind);
+        ui->CustomTripSelect->takeItem(ind);
 
 
     }
@@ -1629,9 +1667,12 @@ void MainWindow::on_reset_clicked()
 
 void MainWindow::on_PlanCustomTripButton_clicked()
 {
-    QStringList transfer;
+    QString transfer;
     QTableWidgetItem *current;
+    QStringList startTar;
+    QStringList endTar;
     int tableSize = ui->CustomTripSELECTED->count();
+    int totalDist = 0;
     ui->TripTable->clear();
     qDebug() << "tableSize " << tableSize;
 
@@ -1641,23 +1682,44 @@ void MainWindow::on_PlanCustomTripButton_clicked()
     ui->TripTable->setColumnWidth(1,100);
     ui->TripTable->setRowCount(tableSize);
 
-
-
+    //tranfer all custom trips
     for(int i = 0; i < tableSize; i++)
     {
-        transfer = ui->CustomTripSELECTED->item(i)->text().split(", ", QString::SkipEmptyParts);
+        transfer = ui->CustomTripSELECTED->item(i)->text();
 
         current = ui->TripTable->item(i,0);
 
         if(current == nullptr)
             current = new QTableWidgetItem();
 
-        current->setText(transfer[1]);
+        current->setText(transfer);
         ui->TripTable->setItem(i,0,current);
-        qDebug() << "Transfering " << transfer[1] << "to" << current->text();
+        qDebug() << "Transfering " << transfer << "to" << current->text();
 
         transfer.clear();
+    }
 
+    tableSize = ui->TripTable->rowCount();
+    totalDist = 0;
+    QList<TableOutput> run2Dij;
+
+    //calc dis
+    for(int i = 0; i < tableSize-1; i++)
+    {
+        startTar = ui->TripTable->item(i,0)->text().split(", ", QString::SkipEmptyParts);
+        endTar = ui->TripTable->item(i+1,0)->text().split(", ", QString::SkipEmptyParts);
+
+        run2Dij = graphs.Djikstra(startTar[1]);
+        //scans the Dijkstra list for the end target stadium
+        for(int i = 0; i < run2Dij.size(); i++)
+        {
+            //end in Djik stadium  ==  end stadium
+            if(endTar[1] == run2Dij[i].stadiums)
+            {
+                totalDist += run2Dij[i].mileage; // the mileage b/w the two stadiums
+                i = run2Dij.size();
+            }
+        }
     }
 
     ui->TripTable->selectRow(0);
@@ -1665,21 +1727,12 @@ void MainWindow::on_PlanCustomTripButton_clicked()
 
     currentShown = 0;
 
-    int index = -1;
+    QStringList initial = ui->TripTable->itemAt(0,0)->text().split(", ", QString::SkipEmptyParts);;
 
-    for(int o = 0; o < mblInfo.size(); o++)
-    {
-        if(mblInfo[o].StadiumName == ui->TripTable->item(0,0)->text())
-        {
-            index = o;
-            o = mblInfo.size();
-        }
-    }
-
-
-    showTripsStadium(index);
+    showTripsStadium(initial[1]);
     ui->TripTable->setHorizontalHeaderLabels(headers);
     ui->TripTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->DistanceTravelled->setText("Total Distance: " + QString::number(totalDist));    
     UpdateTotalCost();
 
 }
@@ -1699,5 +1752,180 @@ void MainWindow::on_MainPageTabs_currentChanged(int index)
             ui->listWidget->setCurrentRow(0);
             on_pushButton_TeamInfo_clicked();
         break;
+        case 3: //distances b/w 2 stadiums
+            on_StartSelection_currentIndexChanged(0);
+            on_EndSelection_currentIndexChanged(0);
+        break;
+        case 4: //plantrip
+            on_TripSelectTeam_currentIndexChanged(0);
+        break;
     }
+}
+
+void MainWindow::setLogos()
+{
+    logos.reserve(31);
+    int index = 0;
+
+    logos.push_back(new QPixmap(":/logos/Diamondbacks"));
+
+    logos.push_back(new QPixmap(":/logos/Braves"));
+
+
+    logos.push_back(new QPixmap(":/logos/Orioles"));
+
+
+    logos.push_back(new QPixmap(":/logos/RedSox"));
+
+
+    logos.push_back(new QPixmap(":/logos/Cubs"));
+
+
+    logos.push_back(new QPixmap(":/logos/WhiteSox"));
+
+
+    logos.push_back(new QPixmap(":/logos/Reds"));
+
+
+    logos.push_back(new QPixmap(":/logos/Indians"));
+
+
+    logos.push_back(new QPixmap(":/logos/Rockies"));
+
+
+    logos.push_back(new QPixmap(":/logos/Tigers"));
+
+    qDebug() << "SetLogoes index: " << index;
+//10
+    logos.push_back(new QPixmap(":/logos/Astros"));
+
+
+    logos.push_back(new QPixmap(":/logos/Royals"));
+
+
+    logos.push_back(new QPixmap(":/logos/Angels"));
+
+
+    logos.push_back(new QPixmap(":/logos/Dodgers"));
+
+
+    logos.push_back(new QPixmap(":/logos/Marlins"));
+
+
+    logos.push_back(new QPixmap(":/logos/Brewers"));
+
+
+    logos.push_back(new QPixmap(":/logos/Twins"));
+
+
+    logos.push_back(new QPixmap(":/logos/Mets"));
+
+
+    logos.push_back(new QPixmap(":/logos/Yankees"));
+
+
+    logos.push_back(new QPixmap(":/logos/Athletics"));
+
+
+    logos.push_back(new QPixmap(":/logos/Phillies"));
+
+
+//20
+    logos.push_back(new QPixmap(":/logos/Pirates"));
+
+
+    logos.push_back(new QPixmap(":/logos/Padres"));
+
+
+    logos.push_back(new QPixmap(":/logos/Giants"));
+
+
+    logos.push_back(new QPixmap(":/logos/Mariners"));
+
+
+    logos.push_back(new QPixmap(":/logos/Cardinals"));
+
+
+    logos.push_back(new QPixmap(":/logos/Rays"));
+
+
+    logos.push_back(new QPixmap(":/logos/Rangers"));
+
+
+    logos.push_back(new QPixmap(":/logos/BlueJays"));
+
+
+    logos.push_back(new QPixmap(":/logos/Nationals"));
+
+    logos.push_back(new QPixmap(":/logos/Gamblers"));
+//30
+}
+
+void MainWindow::ChangeLogo(QString team, QLabel* logo)
+{
+    int index = teamSearch(team);
+    logo->setPixmap(*logos[index]);
+}
+
+void MainWindow::ChangeLogo(int team, QLabel* logo)
+{
+    logo->setPixmap(*(logos[team]));
+}
+
+void MainWindow::on_TripSelectTeam_currentIndexChanged(int index)
+{
+    if(modifyTable && (index >= 0 && index <= infoSize))
+    {   modifyTable = false;
+        ChangeLogo(index, ui->TeamLogo);
+        modifyTable = true;
+    }
+}
+
+void MainWindow::on_listWidget_currentRowChanged(int currentRow)
+{
+    if(modifyTable && (currentRow >= 0 && currentRow <= infoSize))
+    {   modifyTable = false;
+        ChangeLogo(currentRow, ui->InfoLogo);
+        modifyTable = true;
+    }
+}
+
+void MainWindow::on_StartSelection_currentIndexChanged(int index)
+{
+    if(modifyTable && (index >= 0 && index <= infoSize))
+    {   modifyTable = false;
+        ChangeLogo(index, ui->StartLogo);
+        modifyTable = true;
+    }
+}
+
+void MainWindow::on_EndSelection_currentIndexChanged(int index)
+{
+    if(modifyTable && (index >= 0 && index <= infoSize))
+    {   modifyTable = false;
+        ChangeLogo(index, ui->EndLogo);
+        modifyTable = true;
+    }
+}
+
+void MainWindow::on_run2Dijkstra_clicked()
+{
+    QStringList startTar = ui->StartSelection->currentText().split(", ", QString::SkipEmptyParts);
+    QStringList endTar = ui->EndSelection->currentText().split(", ", QString::SkipEmptyParts);
+    QList<TableOutput> run2Dij = graphs.Djikstra(startTar[1]);
+    int distance = 0;
+
+    //scans the Dijkstra list for the end target stadium
+    for(int i = 0; i < run2Dij.size(); i++)
+    {
+        //end stadium == end in Djik stadium
+        if(endTar[1] == run2Dij[i].stadiums)
+        {
+            distance = run2Dij[i].mileage;
+            i = run2Dij.size();
+        }
+    }
+
+    ui->DijkstraDistance->setText("Distance Between Two Stadiums: " + QString::number(distance));
+
 }

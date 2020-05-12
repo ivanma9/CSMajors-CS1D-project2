@@ -16,6 +16,7 @@
 #include <QListWidgetItem>
 #include <QFile>
 #include <QFileDialog>
+#include <QPixmap>
 
 
 QT_BEGIN_NAMESPACE
@@ -160,6 +161,7 @@ public:
     void ReadTxt();
 
     int teamSearch(QString teamName);
+    int stadiumSearch(QString staName);
 
 
 private slots:
@@ -190,14 +192,11 @@ private slots:
 
     void on_PlanTripButton_clicked();
 
-    void on_PlanTripDijkstra_clicked();
-
     void on_TripTable_itemDoubleClicked(QTableWidgetItem *item);
 
     void on_PrevStadium_clicked();
 
     void on_NextStadium_clicked();
-
 
     void on_ResetSouvenir_clicked();
 
@@ -219,6 +218,16 @@ private slots:
 
     void on_MainPageTabs_currentChanged(int index);
 
+    void on_TripSelectTeam_currentIndexChanged(int index);
+
+    void on_listWidget_currentRowChanged(int currentRow);
+
+    void on_StartSelection_currentIndexChanged(int index);
+
+    void on_EndSelection_currentIndexChanged(int index);
+
+    void on_run2Dijkstra_clicked();
+
 private:
     Ui::MainWindow *ui;
 
@@ -234,9 +243,16 @@ private:
 
     void printTripTable(QList<TableOutput> trip);
     void showTripsStadium(int stadium);
+    void showTripsStadium(QString stadium);
 
     void showSouvenir();//test display func
     void UpdateTotalCost();// Updates TotalCost label
+    void setLogos();
+    void ChangeLogo(QString team, QLabel* logo);
+    void ChangeLogo(int team, QLabel* logo);
+
+
+    QList<QPixmap*> logos;
 
     int currentShown = 0; // marks the index of whats currently shown in StadiumTripInfo from howTripsStadium
 };
